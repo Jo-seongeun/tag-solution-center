@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tag Solution Center - Design Sample</title>
+    <link rel="stylesheet" href="./sample.css">
+</head>
+<body>
+    <header class="sample-gnb">
+        <div class="sample-gnb-left">
+            <div class="brand-mark">TS</div>
+            <div>
+                <div class="brand-title">Tag Solution Center</div>
+                <div class="brand-subtitle">Professional Analytics Platform</div>
+            </div>
+        </div>
+        <nav class="sample-gnb-menu">
+            <button class="nav-pill active">Dashboard</button>
+            <button class="nav-pill">Quick Tools</button>
+            <button class="nav-pill">Knowledge Center</button>
+        </nav>
+        <div class="sample-gnb-right">
+            <button class="ghost-button">Admin</button>
+            <div class="avatar">AD</div>
+        </div>
+    </header>
+
+    <div class="sample-layout">
+        <aside class="sample-sidebar">
+            <div class="sidebar-section">
+                <div class="sidebar-title">Quick Tools</div>
+                <a class="sidebar-item active" href="#">Page Tag Diagnostic</a>
+                <a class="sidebar-item" href="#">Basic Tag Generator</a>
+                <a class="sidebar-item" href="#">Conversion Tag Generator</a>
+                <a class="sidebar-item" href="#">E-commerce Tag Generator</a>
+            </div>
+            <div class="sidebar-section">
+                <div class="sidebar-title">Knowledge Center</div>
+                <a class="sidebar-item" href="#">GA4 Deep Dive</a>
+                <a class="sidebar-item" href="#">GTM Deep Dive</a>
+                <a class="sidebar-item" href="#">DataLayer Design</a>
+                <a class="sidebar-item" href="#">Troubleshooting & QA</a>
+            </div>
+        </aside>
+
+        <main class="sample-content">
+            <section class="hero-card">
+                <div class="hero-text">
+                    <h1>Analytics & Tag Operations Hub</h1>
+                    <p>검증된 태그 템플릿, 자동화된 진단, 고급 운영 가이드를 한곳에서 관리하세요.</p>
+                    <div class="hero-actions">
+                        <button class="primary-button">진단 시작</button>
+                        <button class="secondary-button">가이드 둘러보기</button>
+                    </div>
+                </div>
+                <div class="hero-metrics">
+                    <div class="metric-card">
+                        <div class="metric-value">98%</div>
+                        <div class="metric-label">Tag Coverage</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-value">24</div>
+                        <div class="metric-label">Active Templates</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-value">4.9</div>
+                        <div class="metric-label">Ops Score</div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section-grid">
+                <div class="panel">
+                    <div class="panel-header">
+                        <h2>Tag Diagnostic</h2>
+                        <span class="badge">Live</span>
+                    </div>
+                    <div class="panel-body">
+                        <label class="field-label">진단 URL</label>
+                        <div class="field-row">
+                            <input class="field-input" placeholder="https://example.com" />
+                            <button class="primary-button">진단하기</button>
+                        </div>
+                        <div class="progress-box">
+                            <div class="progress-bar"><span style="width: 62%;"></span></div>
+                            <div class="progress-text">진단 진행률 62%</div>
+                        </div>
+                        <div class="tracker-grid">
+                            <div class="tracker-pill">GTM</div>
+                            <div class="tracker-pill">GA4</div>
+                            <div class="tracker-pill">Google Ads</div>
+                            <div class="tracker-pill">Meta</div>
+                            <div class="tracker-pill">TikTok</div>
+                            <div class="tracker-pill">Kakao</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="panel">
+                    <div class="panel-header">
+                        <h2>Tag Generator</h2>
+                        <span class="badge ghost">Template</span>
+                    </div>
+                    <div class="panel-body">
+                        <div class="form-grid">
+                            <div>
+                                <label class="field-label">웹사이트명</label>
+                                <input class="field-input" placeholder="예: Tag Studio" />
+                            </div>
+                            <div>
+                                <label class="field-label">웹사이트 URL</label>
+                                <input class="field-input" placeholder="예: https://tagstudio.co" />
+                            </div>
+                        </div>
+                        <div class="chip-grid">
+                            <label class="chip"><input type="checkbox" checked> GA4</label>
+                            <label class="chip"><input type="checkbox"> GTM</label>
+                            <label class="chip"><input type="checkbox"> Meta</label>
+                            <label class="chip"><input type="checkbox"> TikTok</label>
+                            <label class="chip"><input type="checkbox"> Kakao</label>
+                        </div>
+                        <div class="code-block">
+                            <div class="code-header">
+                                <span>Generated Script</span>
+                                <button class="ghost-button">복사</button>
+                            </div>
+                            <pre><code>&lt;script&gt;gtag('event','purchase',{ value:12000 });&lt;/script&gt;</code></pre>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section-grid">
+                <div class="panel wide">
+                    <div class="panel-header">
+                        <h2>Conversion Matrix</h2>
+                        <span class="badge ghost">Preview</span>
+                    </div>
+                    <div class="panel-body">
+                        <table class="matrix-table">
+                            <thead>
+                                <tr>
+                                    <th>매체</th>
+                                    <th>purchase</th>
+                                    <th>add_to_cart</th>
+                                    <th>begin_checkout</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>GA4</td>
+                                    <td><span class="matrix-chip">Ready</span></td>
+                                    <td><span class="matrix-chip">Ready</span></td>
+                                    <td><span class="matrix-chip">Ready</span></td>
+                                </tr>
+                                <tr>
+                                    <td>Meta</td>
+                                    <td><span class="matrix-chip">Ready</span></td>
+                                    <td><span class="matrix-chip muted">N/A</span></td>
+                                    <td><span class="matrix-chip">Ready</span></td>
+                                </tr>
+                                <tr>
+                                    <td>Total</td>
+                                    <td colspan="3" class="matrix-note">GTM 제외 합산 스크립트 제공</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="panel">
+                    <div class="panel-header">
+                        <h2>Ops Insights</h2>
+                        <span class="badge">Today</span>
+                    </div>
+                    <div class="panel-body">
+                        <div class="callout">
+                            <div class="callout-title">GTM detected</div>
+                            <p>동적 로딩 태그는 추가 진단이 필요합니다. 확장 프로그램 진단을 권장합니다.</p>
+                            <button class="secondary-button">확장 프로그램 안내</button>
+                        </div>
+                        <div class="list-item">
+                            <span>최근 진단 기록</span>
+                            <span class="list-meta">6건</span>
+                        </div>
+                        <div class="list-item">
+                            <span>확장 프로그램 보유</span>
+                            <span class="list-meta">85%</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+</body>
+</html>

@@ -1,0 +1,174 @@
+/* GNB 전체 영역 */
+.gnb {
+    background-color: var(--bg-secondary);
+    border-bottom: 1px solid var(--border-color);
+    box-shadow: var(--shadow-sm);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.gnb-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 var(--spacing-md);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 60px;
+}
+
+/* 로고 */
+.gnb-logo {
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    white-space: nowrap;
+}
+
+/* 메뉴 영역 */
+.gnb-menu {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+}
+
+.gnb-item {
+    position: relative;
+}
+
+/* GNB 버튼 */
+.gnb-button {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.625rem 1rem;
+    background-color: transparent;
+    border: none;
+    border-radius: 8px;
+    font-size: 0.9375rem;
+    font-weight: 500;
+    color: var(--text-primary);
+    cursor: pointer;
+    transition: all 0.2s ease;
+    white-space: nowrap;
+}
+
+.gnb-button:hover {
+    background-color: rgba(148, 163, 184, 0.15);
+}
+
+.gnb-item.active .gnb-button {
+    background-color: var(--primary-color);
+    color: var(--text-white);
+}
+
+.gnb-item.active .gnb-button:hover {
+    background-color: var(--primary-dark);
+}
+
+/* 드롭다운 아이콘 */
+.dropdown-icon {
+    font-size: 0.75rem;
+    transition: transform 0.2s ease;
+}
+
+.gnb-item.open .dropdown-icon {
+    transform: rotate(180deg);
+}
+
+/* 드롭다운 메뉴 */
+.dropdown-menu {
+    position: absolute;
+    top: calc(100% + 0.5rem);
+    left: 0;
+    min-width: 200px;
+    background-color: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    box-shadow: var(--shadow-lg);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: all 0.2s ease;
+    z-index: 1001;
+}
+
+.gnb-item.open .dropdown-menu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+/* 드롭다운 아이템 */
+.dropdown-item {
+    display: block;
+    padding: 0.75rem 1rem;
+    color: var(--text-primary);
+    text-decoration: none;
+    font-size: 0.9375rem;
+    transition: background-color 0.15s ease;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.dropdown-item:first-child {
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+}
+
+.dropdown-item:last-child {
+    border-bottom: none;
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+}
+
+.dropdown-item:hover {
+    background-color: rgba(148, 163, 184, 0.15);
+}
+
+.dropdown-item.active {
+    background-color: rgba(56, 189, 248, 0.2);
+    color: var(--text-primary);
+    font-weight: 600;
+}
+
+/* 반응형 */
+@media (max-width: 1024px) {
+    .gnb-logo {
+        font-size: 1rem;
+    }
+    
+    .gnb-button {
+        font-size: 0.875rem;
+        padding: 0.5rem 0.75rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .gnb-container {
+        flex-direction: column;
+        height: auto;
+        padding: var(--spacing-sm);
+        gap: var(--spacing-sm);
+    }
+    
+    .gnb-menu {
+        width: 100%;
+        justify-content: space-around;
+        flex-wrap: wrap;
+    }
+    
+    .gnb-button {
+        font-size: 0.8125rem;
+        padding: 0.5rem;
+    }
+    
+    .dropdown-menu {
+        left: 50%;
+        transform: translateX(-50%) translateY(-10px);
+    }
+    
+    .gnb-item.open .dropdown-menu {
+        transform: translateX(-50%) translateY(0);
+    }
+}

@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>광고 데이터 & 태그 솔루션 센터</title>
+    <link rel="stylesheet" href="./css/common.css">
+    <link rel="stylesheet" href="./css/gnb.css">
+    <link rel="stylesheet" href="./css/sidebar.css">
+    <link rel="stylesheet" href="./css/dashboard.css">
+</head>
+<body>
+    <!-- GNB 영역 -->
+    <header class="gnb">
+        <div class="gnb-container">
+            <h1 class="gnb-logo">광고 데이터 & 태그 솔루션 센터</h1>
+            
+            <nav class="gnb-menu">
+                <div class="gnb-item dropdown-trigger active" data-page="dashboard">
+                    <button class="gnb-button">
+                        🏠 대시보드 (홈)
+                    </button>
+                </div>
+                
+                <div class="gnb-item dropdown-trigger" data-category="quick-menu">
+                    <button class="gnb-button">
+                        🔧 퀵 도구
+                        <span class="dropdown-icon">▼</span>
+                    </button>
+                    <div class="dropdown-menu">
+                        <a href="#" class="dropdown-item" data-page="page-tag">페이지 태그 진단</a>
+                        <a href="#" class="dropdown-item" data-page="tag-total-sample">매체별 태그 샘플</a>
+                        <a href="#" class="dropdown-item" data-page="tag-basic">기본 태그 생성</a>
+                        <a href="#" class="dropdown-item" data-page="tag-advanced">전환 태그 생성</a>
+                        <a href="#" class="dropdown-item" data-page="tag-ecommerce">전자상거래 태그 생성</a>
+                    </div>
+                </div>
+                
+                <div class="gnb-item dropdown-trigger" data-category="data-center">
+                    <button class="gnb-button">
+                        💡 지식 센터
+                        <span class="dropdown-icon">▼</span>
+                    </button>
+                    <div class="dropdown-menu">
+                        <a href="#" class="dropdown-item" data-page="ga4-setup">GA4 기초 및 심화</a>
+                        <a href="#" class="dropdown-item" data-page="gtm-setup">GTM 기초 및 심화</a>
+                        <a href="#" class="dropdown-item" data-page="data-layer">데이터 레이어 설계</a>
+                        <a href="#" class="dropdown-item" data-page="troubleshooting">트러블슈팅 & QA</a>
+                    </div>
+                </div>
+            
+            </nav>
+        </div>
+    </header>
+
+    <!-- 메인 컨텐츠 영역 -->
+    <div class="main-container">
+        <!-- 사이드바 (대시보드에서는 숨김) -->
+        <aside id="sidebar" class="sidebar hidden">
+            <!-- JS로 동적 생성 -->
+        </aside>
+
+        <!-- 컨텐츠 영역 -->
+        <main id="content" class="content">
+            <!-- 대시보드 내용 -->
+            <div id="dashboard-content" class="dashboard">
+                <div class="hero-section">
+                    <h1 class="hero-title">환영합니다! 솔루션 센터 대시보드</h1>
+                    <p class="hero-description">광고팀의 데이터 신뢰성 확보 및 최적화를 위한 각 도구와 심화 지식을 바로 이용하세요.</p>
+                </div>
+
+                <!-- 주요 기능 카드 -->
+                <section class="main-features">
+                    <div class="feature-card">
+                        <div class="feature-icon">🔍</div>
+                        <h2 class="feature-title">페이지 태그 진단</h2>
+                        <p class="feature-description">랜딩 페이지 URL을 입력하여 모든 주요 매체의 태그 설치 상태를 즉시 검증하고 QA 리포트를 받으세요.</p>
+                        <button class="feature-button feature-button-primary">진단 시작</button>
+                    </div>
+
+                    <div class="feature-card">
+                        <div class="feature-icon">💉</div>
+                        <h2 class="feature-title">GA4 분석 체험관</h2>
+                        <p class="feature-description">GA4의 핵심 보고서와 분석 기능을 직접 체험하고, 데이터 분석의 최적화 방향성을 학습하세요. (Project 1 연동)</p>
+                        <button class="feature-button feature-button-secondary">체험관으로 이동</button>
+                    </div>
+                </section>
+
+                <!-- 핵심 기능 및 가이드 -->
+                <section class="guides-section">
+                    <h2 class="section-title">핵심 기능 및 가이드 둘러보기</h2>
+                    
+                    <div class="guide-grid">
+                        <div class="guide-item">
+                            <div class="guide-header">
+                                <span class="guide-icon">🔧</span>
+                                <span class="guide-category">퀵 도구</span>
+                            </div>
+                            <h3 class="guide-title">📋 기본 & 전환 태그 생성</h3>
+                            <p class="guide-text">광고주에게 전달할 GTM, GA4, Meta 등 매체별 표준 태그와 전환 태그를 쉽고 빠르게 생성합니다.</p>
+                        </div>
+
+                        <div class="guide-item">
+                            <div class="guide-header">
+                                <span class="guide-icon">🔧</span>
+                                <span class="guide-category">퀵 도구</span>
+                            </div>
+                            <h3 class="guide-title">💡 필수 확장 프로그램 가이드</h3>
+                            <p class="guide-text">광고팀/AE가 필수로 설치해야 할 디버깅 툴(Tag Assistant, Pixel Helper 등)의 사용법을 안내합니다.</p>
+                        </div>
+
+                        <div class="guide-item">
+                            <div class="guide-header">
+                                <span class="guide-icon">💡</span>
+                                <span class="guide-category">지식 센터</span>
+                            </div>
+                            <h3 class="guide-title">📊 GA4/GTM 심화 원리</h3>
+                            <p class="guide-text">GA4 이벤트 모델, GTM의 데이터 레이어 및 변수/트리거 설계 등 심화 지식을 문서로 제공합니다.</p>
+                        </div>
+                        <div class="guide-item">
+                            <div class="guide-header">
+                                <span class="guide-icon">💡</span>
+                                <span class="guide-category">지식 센터</span>
+                            </div>
+                            <h3 class="guide-title">🔧 트러블슈팅 & QA</h3>
+                            <p class="guide-text">태그 동작 오류, 데이터 이상 발생 시 원인 파악 및 분석에 필요한 단계별 진단 가이드를 제공합니다.</p>
+                        </div>
+
+                    </div>
+                </section>
+            </div>
+
+            <!-- 동적 컨텐츠 영역 (다른 페이지들) -->
+            <div id="dynamic-content" class="dynamic-content hidden">
+                <!-- 여기에 동적으로 컨텐츠가 로드됩니다 -->
+            </div>
+
+            <footer class="content-footer">
+                <div class="footer-links">
+                    <a href="#" class="footer-link" onclick="navigationInstance.navigateToPage('service-policy'); return false;">이용 약관</a>
+                    <a href="#" class="footer-link" onclick="navigationInstance.navigateToPage('privacy-policy'); return false;">개인정보처리방침</a>
+                    <a href="mailto:XX@XX.xxx" class="footer-link">문의하기</a>
+                    <a href="https://www.nasmedia.co.kr" class="footer-link" target="_blank" rel="noopener">광고문의</a>
+                </div>
+                <div class="footer-copy">© 2025 KT nasmedia. All rights reserved.</div>
+            </footer>
+        </main>
+    </div>
+
+    <!-- JavaScript -->
+    <script src="./data/tagSampleData.js"></script>
+    <script src="./js/tagGeneratorShared.js"></script>
+    <script src="./js/pageTagDiagnostic.js"></script>
+    <script src="./data/tagBasicPage.js"></script>
+    <script src="./data/tagAdvancedPage.js"></script>
+    <script src="./data/tagEcommercePage.js"></script>
+    <script src="./data/ga4ExperiencePage.js"></script>
+    <script src="./data/dataCenterPages.js"></script>
+    <script src="./js/menuData.js"></script>
+    <script src="./js/gnb.js"></script>
+    <script src="./js/navigation.js"></script>
+    <script src="./js/main.js"></script>
+</body>
+</html>
