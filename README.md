@@ -1,130 +1,104 @@
-# 태그 솔루션 센터
+# 태그 솔루션 센터 (Tag Solution Center)
 
-광고 데이터 & 태그 솔루션을 위한 대시보드 웹 애플리케이션입니다.
+광고 데이터 트래킹 및 메타데이터, 태그 관리를 효율적으로 지원하기 위해 만들어진 대시보드 형태의 종합 웹 애플리케이션입니다. 퍼포먼스 마케터와 데이터 분석가가 태그를 진단하고, 매체별 태그를 생성하며, GA4 API를 실전 경험할 수 있도록 돕습니다.
 
-## 📁 프로젝트 구조
+## ✨ 주요 기능 (Features)
+
+### 1. 🔧 퀵 도구 (Quick Tools)
+- **페이지 태그 진단 (광고 트래킹 태그 분석기)**
+  - 페이지 URL을 입력하면 실시간으로 해당 웹페이지의 HTML을 스크래핑하여 삽입된 매체 태그(GA4, GTM, Meta, Kakao 등)를 진단하고 이벤트 실행 여부를 확인합니다.
+- **매체별 태그 샘플**
+  - GTM, GA4, Google Ads, Meta, TikTok, Kakao 등 주요 매체의 기본 픽셀 및 전환 이벤트 스크립트 코드 샘플을 제공합니다.
+- **광고 태그 생성 (기본/전환/전자상거래)**
+  - 비즈니스에 맞는 맞춤형 태그 스크립트를 파라미터에 맞추어 자동으로 생성합니다.
+- **GA4 실전 연동 체험관**
+  - **Google OAuth 2.0**을 이용해 실제 사용자의 구글 계정과 연동합니다.
+  - Vercel Serverless Function을 기반으로 **Google Analytics Data API (v1beta)**를 호출하여, GA4 속성의 핵심 지표(총 사용자, 신규 사용자, 세션, 참여율, 이탈률 등)와 리포트 데이터를 대시보드 차트 형태로 렌더링합니다.
+
+### 2. 💡 지식 센터 (Knowledge Center)
+- **학습 콘텐츠**
+  - GA4 및 GTM의 기초부터 심화까지 전반적인 지식을 제공합니다.
+  - **DataLayer 설계 가이드**: 구조화된 데이터 전송을 위한 데이터 레이어 작성법 안내.
+  - **트러블슈팅 및 QA**: 태그 파편화나 데이터 유실 등 흔히 발생하는 문제에 대한 디버깅 가이드 제공.
+
+### 3. 📝 설정 및 가이드
+- 트래킹/태그 매니저 디버깅에 필수적인 브라우저 확장 프로그램 가이드 제공 (Tag Assistant, Meta Pixel Helper 등).
+
+---
+
+## 📁 프로젝트 구조 (Project Structure)
+
+Vanilla JavaScript 기반의 **SPA(Single Page Application)** 아키텍처로 구성되어 있으며, 백엔드 API 통신은 **Vercel Serverless Functions**를 활용합니다.
 
 ```
 tag-solution-center/
-├── index.html              # 메인 HTML 파일
-├── css/
-│   ├── common.css         # 공통 스타일
-│   ├── gnb.css            # GNB 스타일
-│   ├── sidebar.css        # 사이드바 및 페이지 컨텐츠 스타일
-│   └── dashboard.css      # 대시보드 스타일
-├── js/
-│   ├── main.js            # 메인 JavaScript
-│   ├── gnb.js             # GNB 드롭다운 기능
-│   └── navigation.js      # 페이지 네비게이션
-└── data/
-    └── menuData.js        # 메뉴 및 페이지 데이터
+├── api/                        # Vercel Serverless Functions (백엔드 로직)
+│   ├── ga4/                    # GA4 Data API 통신 로직 (리포트/계정/속성 조회)
+│   └── oauth/                  # Google OAuth 2.0 연동 및 콜백 처리
+├── css/                        # 전체 스타일시트
+│   ├── common.css              # 공통 UI 스타일 및 유틸리티
+│   ├── dashboard.css           # 대시보드 레이아웃
+│   ├── gnb.css                 # 상단 GNB 스타일
+│   └── sidebar.css             # 좌측 사이드바 및 페이지 컨텐츠 디자인
+├── data/                       # 컨텐츠 및 페이지 데이터
+│   ├── ga4ExperiencePage.js    # GA4 체험관 대시보드 UI 및 통신 로직
+│   ├── menuData.js             # 네비게이션 트리 및 화면 구성 데이터
+│   └── tagSampleData.js        # 매체별 태그 샘플 스크립트 데이터
+├── js/                         # 핵심 프론트엔드 로직
+│   ├── main.js                 # 앱 초기화 및 이벤트 바인딩
+│   ├── navigation.js           # SPA 라우팅 로직 및 페이지 전환
+│   ├── tagGeneratorShared.js   # 태그 자동 생성 기능 로직
+│   └── urlDiagnostic.js        # URL 기반 태그 진단/분석 스크립트 로직
+├── index.html                  # 메인 엔트리 포인트 HTML
+└── package.json                # npm 패키지 및 의존성 관리
 ```
 
-## 🚀 사용 방법
+---
 
-1. **로컬에서 실행**
-   - `index.html` 파일을 브라우저에서 열기
-   - 또는 Live Server 등의 로컬 서버 사용
+## 🚀 로컬 실행 방법 (Getting Started)
 
-2. **페이지 구성**
-   - **대시보드(홈)**: 메인 화면, 주요 기능 소개
-   - **퀵 도구**: 페이지 태그 진단, 태그 설정 등
-   - **지식 센터**: GA4, GTM 관련 학습 자료
-   - **설정 및 가이드**: 트러블슈팅, 확장 프로그램 가이드
+본 프로젝트는 프론트엔드 라우팅과 함께 `/api` 하위의 서버리스 함수 통신이 필요하므로 **Vercel CLI**를 이용해 로컬 서버를 실행하는 것을 권장합니다.
 
-## 🎨 주요 기능
-
-### 1. GNB (Global Navigation Bar)
-- 대시보드(홈) 버튼
-- 드롭다운 메뉴 (퀵 도구, 지식 센터, 설정 및 가이드)
-- 활성 상태 표시
-- 반응형 디자인
-
-### 2. 사이드바
-- 카테고리별 메뉴 표시
-- 현재 페이지 하이라이트
-- 대시보드에서는 숨김
-
-### 3. 동적 페이지 전환
-- SPA(Single Page Application) 방식
-- URL 파라미터 지원 (`?page=xxx&category=xxx`)
-- 브라우저 히스토리 지원 (뒤로가기/앞으로가기)
-
-## 🔧 커스터마이징
-
-### 새로운 페이지 추가하기
-
-1. **menuData.js에 메뉴 추가**
-```javascript
-'your-category': {
-    title: '카테고리 제목',
-    items: [
-        { 
-            id: 'new-page', 
-            name: '새 페이지',
-            icon: '🆕'
-        }
-    ]
-}
+### 1. 패키지 설치
+```bash
+npm install
+```
+또는 Vercel CLI 전역 설치:
+```bash
+npm install -g vercel
 ```
 
-2. **pageContents에 컨텐츠 추가**
-```javascript
-'new-page': {
-    title: '새 페이지',
-    content: `
-        <div class="page-content">
-            <h1>새 페이지</h1>
-            <p>페이지 내용...</p>
-        </div>
-    `
-}
+### 2. 환경 변수 설정
+최상위 경로에 `.env.local` 파일을 생성하고 Google Cloud Console에서 발급받은 OAuth Credentials 정보를 입력합니다.
+```env
+# .env.local
+GOOGLE_CLIENT_ID=your_google_client_id.apps.googleusercontent.com
+GOOGLE_CLIENT_SECRET=your_google_client_secret
+GOOGLE_REDIRECT_URI=http://localhost:3000/api/oauth/callback
 ```
 
-3. **HTML의 GNB에 드롭다운 아이템 추가**
-```html
-<a href="#" class="dropdown-item" data-page="new-page">새 페이지</a>
+### 3. Vercel 개발 서버 실행
+```bash
+vercel dev
 ```
+- 기본적으로 `http://localhost:3000` 에서 프로젝트가 실행됩니다.
+- `/api` 라우트로 요청 시 백엔드 함수가 정상적으로 실행됩니다.
 
-### 스타일 변경하기
+---
 
-`css/common.css`의 CSS 변수를 수정하여 전체 디자인 변경:
+## 🌐 호스팅 방식 (Deployment)
 
-```css
-:root {
-    --primary-color: #6366f1;  /* 메인 컬러 */
-    --bg-primary: #f8f9fa;     /* 배경 컬러 */
-    /* ... */
-}
-```
+본 프로젝트는 **Vercel** 배포에 최적화되어 있습니다.
+1. 소스 코드를 GitHub 등 Git 레포지토리에 푸시합니다.
+2. Vercel 대시보드에서 해당 레포지토리를 Import 합니다.
+3. Vercel의 Settings > Environment Variables 메뉴에서 `.env.local`에 작성했던 세 가지 환경 변수를 동일하게 추가합니다. (REDIRECT_URI는 Vercel 배포 도메인으로 변경)
+4. 배포가 완료되면 프론트엔드 정적 파일 서빙 및 `/api` 서버리스 함수가 자동으로 구성됩니다.
 
-## 📱 반응형 지원
+---
 
-- 데스크톱: 1024px 이상
-- 태블릿: 768px ~ 1024px
-- 모바일: 768px 이하
+## 💻 사용 기술 스택 (Tech Stack)
 
-## 🌐 브라우저 지원
-
-- Chrome (최신 버전)
-- Firefox (최신 버전)
-- Safari (최신 버전)
-- Edge (최신 버전)
-
-## 💡 개발 팁
-
-1. **콘솔 확인**: 브라우저 개발자 도구에서 에러 확인
-2. **URL 파라미터**: 특정 페이지로 직접 접근 가능 (예: `?page=ga4-setup&category=data-center`)
-3. **로컬 스토리지**: Utils 객체의 saveToStorage/loadFromStorage 사용
-
-## 📝 향후 개선 사항
-
-- [ ] 페이지별 실제 기능 구현
-- [ ] API 연동
-- [ ] 검색 기능 추가
-- [ ] 다크 모드 지원
-- [ ] 다국어 지원
-
-## 📄 라이선스
-
-이 프로젝트는 내부 사용을 위한 프로젝트입니다.
+- **Frontend**: HTML5, CSS3(Vanilla), JavaScript (ES6+ - SPA Architecture)
+- **Backend (API)**: Node.js (Vercel Serverless Functions)
+- **Authencation**: Google OAuth 2.0
+- **Third-Party APIs**: Google Analytics API, Google Analytics Data API (v1beta)
