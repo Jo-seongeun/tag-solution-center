@@ -888,85 +888,130 @@ height=\"0\" width=\"0\" style=\"display:none;visibility:hidden\"&gt;&lt;/iframe
         },
         // DataLayer
         'data-layer': {
-            title: '데이터 레이어 설계',
+            title: '데이터 레이어 설계 (실전편)',
             content: `
                 <div class="page-content">
-                    <h1>🗂️ 데이터 레이어 설계</h1>
-                    <p>데이터 레이어의 구조와 설계 원칙을 정리합니다.</p>
-
-                    <div class="article-section">
-                        <h2>데이터 레이어 목적</h2>
-                        <ul class="info-list">
-                            <li>데이터 전송 구조 표준화</li>
-                            <li>개발/마케팅 협업 효율화</li>
-                            <li>측정 오류 및 중복 방지</li>
-                        </ul>
+                    <div class="content-hero-box">
+                        <h1>📋 데이터 레이어 표준 설계 가이드</h1>
+                        <p>효율적인 데이터 수집을 위해 마케터가 정의해야 할 표준 규격입니다.</p>
                     </div>
 
                     <div class="article-section">
-                        <h2>설계 원칙</h2>
+                        <h2>🔍 필수 포함 요소 3가지</h2>
+                        <table class="qa-table">
+                            <thead>
+                                <tr>
+                                    <th>요소</th>
+                                    <th>설명</th>
+                                    <th>예시</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>Event (행동)</strong></td>
+                                    <td>어떤 행동이 일어났을 때 전송할지 정의</td>
+                                    <td>purchase, add_to_cart, login</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Parameters (정보)</strong></td>
+                                    <td>그 행동에 대한 상세 설명 정보</td>
+                                    <td>item_name, price, currency</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>User Data (사용자)</strong></td>
+                                    <td>누가 이 행동을 했는지에 대한 정보</td>
+                                    <td>user_id, membership_level</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="article-section">
+                        <h2>🛍️ 전자상거래 필수 설계 (GA4 표준)</h2>
+                        <p class="section-description">GA4에서 매출 보고서를 보기 위해 반드시 지켜야 할 규격입니다.</p>
+                        <div class="code-block">
+                            <button class="copy-button" onclick="copyCode('dataLayer-ecommerce-standard')">복사</button>
+                            <pre><code id="dataLayer-ecommerce-standard">// 상품 조회(view_item) 발생 시
+window.dataLayer.push({
+  'event': 'view_item',
+  'ecommerce': {
+    'items': [{
+      'item_id': 'SKU_12345',
+      'item_name': '나스미디어 티셔츠',
+      'price': 25000,
+      'item_category': '의류'
+    }]
+  }
+});</code></pre>
+                        </div>
+                    </div>
+
+                    <div class="article-section">
+                        <h2>⚠️ 설계 시 주의사항 (마케터 체크리스트)</h2>
                         <ul class="info-list">
-                            <li>이벤트 단위로 구조화</li>
-                            <li>명확한 키 네이밍</li>
-                            <li>문서화 및 변경 이력 관리</li>
+                            <li><strong>일관된 네이밍:</strong> 모든 단어는 소문자와 언더바(_)를 권장합니다. (예: <code>order_id</code>)</li>
+                            <li><strong>데이터 타입:</strong> 가격이나 수량은 따옴표 없는 숫자형태(25000)가 분석에 유리합니다.</li>
+                            <li><strong>전송 시점:</strong> 버튼을 누른 직후인지, 페이지가 완전히 로드된 후인지 개발자와 상의하세요.</li>
                         </ul>
                     </div>
+
                     <div class="article-section">
                         <h2>스크린샷 가이드</h2>
                         <div class="screenshot-guide">
-                            <div class="screenshot-placeholder">데이터 레이어 표준 정의서</div>
-                            <div class="screenshot-placeholder">QA 로그 캡처 화면</div>
+                            <div class="screenshot-placeholder">GTM 미리보기에서 데이터 레이어 변수 확인법</div>
+                            <div class="screenshot-placeholder">잘못된 데이터 레이어 전송 사례(Error)</div>
                         </div>
                     </div>
                 </div>
             `
         },
         'data-layer-intro': {
-            title: '데이터 레이어 소개',
+            title: '데이터 레이어란? (개념편)',
             content: `
                 <div class="page-content">
-                    <h1>🗂️ 데이터 레이어 소개</h1>
-                    <p>실무에서 사용되는 데이터 레이어의 기본 구조를 이해합니다.</p>
+                    <div class="content-hero-box">
+                        <h1>🗂️ 데이터 레이어: 개발자와의 전용 우체통</h1>
+                        <p>데이터 레이어는 웹사이트와 GTM 사이에서 데이터를 주고받는 <strong>'표준화된 바구니'</strong>입니다.</p>
+                    </div>
 
                     <div class="article-section">
-                        <h2>기본 구조 예시</h2>
+                        <h2>💡 왜 데이터 레이어가 필요한가요?</h2>
+                        <div class="notice-box">
+                            <h4 class="notice-title">기존 방식 vs 데이터 레이어 방식</h4>
+                            <ul class="notice-list">
+                                <li><strong>일반적인 방식:</strong> "화면에 있는 '구매하기' 버튼 클릭하면 알려줘!" (웹사이트 디자인이 바뀌면 데이터 수집이 끊김)</li>
+                                <li><strong>데이터 레이어 방식:</strong> "디자인 상관없이, 구매가 일어나면 이 바구니에 '구매완료'라고 적어서 던져줘!" (디자인이 바뀌어도 데이터는 안전함)</li>
+                            </ul>
+                        </div>
                         <ul class="info-list">
-                            <li>event: 이벤트명</li>
-                            <li>page: 페이지 정보</li>
-                            <li>user: 사용자 정보</li>
-                            <li>ecommerce: 전자상거래 정보</li>
+                            <li><strong>데이터 안정성:</strong> 웹사이트 화면 구성(HTML)이 바뀌어도 데이터 수집이 끊기지 않습니다.</li>
+                            <li><strong>정확한 정보:</strong> 상품명, 가격, 회원 등급 등 화면에 보이지 않는 상세 정보를 정확히 전달합니다.</li>
+                            <li><strong>마케터의 자유도:</strong> 개발자의 추가 수정 없이도 GTM에서 다양한 데이터를 자유롭게 꺼내 쓸 수 있습니다.</li>
                         </ul>
                     </div>
 
                     <div class="article-section">
-                        <h2>운영 팁</h2>
-                        <ul class="info-list">
-                            <li>키 이름 표준화 후 공유</li>
-                            <li>업데이트 시 문서 함께 수정</li>
-                            <li>릴리즈마다 샘플 로그 점검</li>
-                        </ul>
+                        <h2>🤝 마케터-개발자 협업 흐름</h2>
+                        <ol class="info-list">
+                            <li><strong>마케터:</strong> "이벤트 발생 시 이런 정보(상품명, 가격 등)를 데이터 레이어에 담아주세요"라고 요청 (가이드 전달)</li>
+                            <li><strong>개발자:</strong> 요청한 시점에 정해진 양식대로 <code>dataLayer.push</code> 코드 삽입</li>
+                            <li><strong>GTM:</strong> 바구니(dataLayer)에 담긴 정보를 실시간으로 감지하여 광고 매체로 전송</li>
+                        </ol>
                     </div>
 
                     <div class="article-section">
-                        <h2>코드 예시 (dataLayer push)</h2>
+                        <h2>📜 실제 코드는 이렇게 생겼어요</h2>
+                        <p class="section-description">개발자에게 전달할 '주문서'의 견본입니다.</p>
                         <div class="code-block">
-                            <button class="copy-button" onclick="copyCode('dataLayer-push-sample')">복사</button>
-                            <pre><code id="dataLayer-push-sample">&lt;script&gt;
+                            <button class="copy-button" onclick="copyCode('dataLayer-basic-concept')">복사</button>
+                            <pre><code id="dataLayer-basic-concept">&lt;script&gt;
 window.dataLayer = window.dataLayer || [];
 window.dataLayer.push({
-  event: 'signup',
-  user_id: 'USER_123',
-  page_category: 'account'
+  'event': 'contact_form_submit', // 어떤 행동인가?
+  'user_type': 'gold_member',      // 누가 했는가?
+  'inquiry_type': 'partnership'    // 어떤 내용인가?
 });
 &lt;/script&gt;</code></pre>
-                        </div>
-                    </div>
-
-                    <div class="faq-section">
-                        <h3>FAQ</h3>
-                        <div class="faq-item">
-                            <h4>dataLayer가 비어 있어요</h4>
-                            <p>push 위치가 DOM 로드 이전인지 확인하고, 스크립트 순서를 점검하세요.</p>
                         </div>
                     </div>
                 </div>
@@ -1128,7 +1173,10 @@ window.dataLayer.push({
             title: '이용 약관',
             content: `
                 <div class="page-content">
-                    <h1>📄 이용약관</h1>
+                    <div class="content-hero-box">
+                        <h1>📄 이용약관</h1>
+                        <p>태그 솔루션 센터 서비스 이용에 관한 권리와 의무를 안내해 드립니다.</p>
+                    </div>
 
                     <div class="article-section">
                         <h2>1. 서비스 이용 조건</h2>
@@ -1186,8 +1234,10 @@ window.dataLayer.push({
             title: '개인정보처리방침',
             content: `
                 <div class="page-content">
-                    <h1>🔐 개인정보처리방침</h1>
-                    <p>케이티 나스미디어는 고객님들의 소중한 개인정보 보호를 위해 아래와 같은 방침을 수행하고 있습니다.</p>
+                    <div class="content-hero-box">
+                        <h1>🔐 개인정보처리방침</h1>
+                        <p>케이티 나스미디어는 고객님들의 소중한 개인정보 보호를 위해 아래와 같은 방침을 수행하고 있습니다.</p>
+                    </div>
 
                     <div class="article-section">
                         <h2>1. 애플리케이션 개인정보처리방침</h2>

@@ -37,7 +37,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&amp;l='+l:'';j.async=true;j.src=
 })(window,document,'script','dataLayer','GTM-XXXXXXX');
 &lt;/script&gt;</code></pre>
                     </div>
-                    <ol>
+                    <ol class="info-list">
                         <li>GTM 컨테이너 ID를 'GTM-XXXXXXX' 부분에 실제 ID로 교체</li>
                         <li>웹사이트의 모든 페이지 &lt;head&gt; 섹션에 삽입</li>
                         <li>페이지 로드 시 자동으로 GTM이 초기화됨</li>
@@ -54,7 +54,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&amp;l='+l:'';j.async=true;j.src=
 height="0" width="0" style="display:none;visibility:hidden"&gt;&lt;/iframe&gt;
 &lt;/noscript&gt;</code></pre>
                     </div>
-                    <ol>
+                    <ol class="info-list">
                         <li>GTM 컨테이너 ID를 'GTM-XXXXXXX' 부분에 실제 ID로 교체</li>
                         <li>&lt;body&gt; 태그 바로 아래(최상단)에 삽입</li>
                         <li>스크립트 차단 환경에서도 기본 추적 유지</li>
@@ -138,7 +138,7 @@ window.dataLayer.push({
 &lt;/script&gt;</code></pre>
                     </div>
 
-                    <ol>
+                    <ol class="info-list">
                         <li>이벤트가 발생하는 지점(클릭/제출/구매)에 스크립트 삽입</li>
                         <li>이벤트명과 파라미터를 GTM 트리거/변수와 매칭</li>
                         <li>GTM 미리보기로 이벤트 수집 여부 확인</li>
@@ -190,7 +190,7 @@ window.dataLayer.push({
 &lt;/script&gt;</code></pre>
                     </div>
 
-                    <ol>
+                    <ol class="info-list">
                         <li>필요한 변수 목록을 정의하고 네이밍 규칙 확정</li>
                         <li>dataLayer에 동일한 키로 값을 푸시</li>
                         <li>GTM에서 데이터 레이어 변수로 매핑하여 사용</li>
@@ -224,7 +224,7 @@ window.dataLayer.push({
   gtag('config', 'G-XXXXXXX');
 &lt;/script&gt;</code></pre>
                     </div>
-                    <ol>
+                    <ol class="info-list">
                         <li>측정 ID를 'G-XXXXXXX' 부분에 실제 ID로 교체</li>
                         <li>웹사이트의 모든 페이지 &lt;head&gt; 섹션에 삽입</li>
                         <li>페이지 로드 시 기본 페이지뷰가 자동 수집됨</li>
@@ -302,7 +302,7 @@ window.dataLayer.push({
 });
 &lt;/script&gt;</code></pre>
                     </div>
-                    <ol>
+                    <ol class="info-list">
                         <li>이벤트 발생 지점에 스크립트 삽입</li>
                         <li>이벤트명/파라미터를 GTM 또는 gtag 설정과 매칭</li>
                         <li>디버그뷰에서 수집 여부 확인</li>
@@ -364,7 +364,7 @@ gtag('set', 'user_properties', {
   gtag('config', 'AW-XXXXXXX');
 &lt;/script&gt;</code></pre>
                     </div>
-                    <ol>
+                    <ol class="info-list">
                         <li>전환 ID를 'AW-XXXXXXX' 부분에 실제 ID로 교체</li>
                         <li>웹사이트의 모든 페이지 &lt;head&gt; 섹션에 삽입</li>
                         <li>브라우저 개발자 도구에서 gtag 스크립트 로드 여부 확인</li>
@@ -375,7 +375,7 @@ gtag('set', 'user_properties', {
                 <div class="tag-section">
                     <h2 id="google-ads-conversion-action">Google Ads 전환 액션 생성 방법</h2>
                     <p class="section-description">전환 라벨을 생성하기 위한 관리자 설정 가이드입니다.</p>
-                    <ol>
+                    <ol class="info-list">
                         <li>Google Ads 로그인 후 <strong>도구 및 설정</strong> &gt; <strong>전환</strong> 메뉴 이동</li>
                         <li><strong>+ 새 전환 작업</strong> 클릭</li>
                         <li>전환 소스 선택 (예: 웹사이트)</li>
@@ -408,7 +408,7 @@ gtag('event', 'conversion', {
 });
 &lt;/script&gt;</code></pre>
                     </div>
-                    <ol>
+                    <ol class="info-list">
                         <li>전환 라벨을 'AW-XXXXXXX/ABCDEFG123456' 부분에 실제 값으로 교체</li>
                         <li>구매 완료/신청 완료 등 전환 발생 시점에 실행</li>
                         <li>금액/통화/주문번호 등 파라미터는 실제 값으로 전달</li>
@@ -459,7 +459,7 @@ fbq('track', 'PageView');
 src="https://www.facebook.com/tr?id=123456789012345&amp;ev=PageView&amp;noscript=1"/&gt;&lt;/noscript&gt;
 &lt;!-- End Meta Pixel Code --&gt;</code></pre>
                     </div>
-                    <ol>
+                    <ol class="info-list">
                         <li>픽셀 ID를 '123456789012345' 부분에 실제 ID로 교체</li>
                         <li>웹사이트의 모든 페이지 &lt;head&gt; 섹션에 삽입</li>
                         <li>Meta 이벤트 관리자 &gt; 테스트 이벤트로 수신 여부 확인</li>
@@ -777,7 +777,7 @@ fbq('trackSingleCustom', 'AGENCY_B_PIXEL', 'VideoPlay', {
 &lt;/script&gt;
 &lt;!-- End TikTok Pixel Code --&gt;</code></pre>
                     </div>
-                    <ol>
+                    <ol class="info-list">
                         <li>픽셀 ID를 'TT-XXXXXXX' 부분에 실제 ID로 교체</li>
                         <li>웹사이트의 모든 페이지 &lt;head&gt; 섹션에 삽입</li>
                         <li>Tiktok 이벤트 관리자 &gt; 테스트 이벤트로 수신 여부 확인</li>
@@ -879,7 +879,7 @@ ttq.track('CustomPurchaseIntent', {
   kakaoPixel('1234567890123456789').pageView();
 &lt;/script&gt;</code></pre>
                     </div>
-                    <ol>
+                    <ol class="info-list">
                         <li>픽셀 ID를 '1234567890123456789' 부분에 실제 ID로 교체</li>
                         <li>웹사이트의 모든 페이지 &lt;head&gt; 섹션에 삽입</li>
                         <li>Kakao 픽셀 관리자 &gt; 테스트 이벤트로 수신 여부 확인</li>

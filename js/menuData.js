@@ -6,71 +6,71 @@ const menuData = {
         subtitle: '광고 운영에 필요한 핵심 도구를 빠르게 실행합니다.',
         sectionTitle: '도구 목록',
         items: [
-            { 
-                id: 'page-tag', 
+            {
+                id: 'page-tag',
                 name: '페이지 태그 진단',
                 icon: '🔍'
             },
-            { 
-                id: 'tag-total-sample', 
+            {
+                id: 'tag-total-sample',
                 name: '매체별 태그 샘플',
                 icon: '🏷️'
             },
-            { 
-                id: 'tag-basic', 
+            {
+                id: 'tag-basic',
                 name: '기본 태그 설정',
                 icon: '📋'
             },
-            { 
-                id: 'tag-advanced', 
+            {
+                id: 'tag-advanced',
                 name: '전환 태그 설정',
                 icon: '⚙️'
             },
-            { 
-                id: 'tag-ecommerce', 
+            {
+                id: 'tag-ecommerce',
                 name: '전자상거래 태그 설정',
                 icon: '🔗'
             }
         ]
     },
-    
+
     // 지식 센터 카테고리
     'data-center': {
         title: '💡 지식 센터',
         subtitle: '분석과 태그 지식의 기초부터 심화까지 제공합니다.',
         sectionTitle: '학습 콘텐츠',
         items: [
-            { 
-                id: 'ga4-setup', 
+            {
+                id: 'ga4-setup',
                 name: 'GA4 기초 및 심화',
                 icon: '📊'
             },
-            { 
-                id: 'gtm-setup', 
+            {
+                id: 'gtm-setup',
                 name: 'GTM 기초 및 심화',
                 icon: '🏷️'
             },
-            { 
-                id: 'data-layer', 
+            {
+                id: 'data-layer',
                 name: '데이터 레이어 설계',
                 icon: '🗂️'
             },
-            { 
-                id: 'troubleshooting', 
+            {
+                id: 'troubleshooting',
                 name: '트러블슈팅 & QA',
                 icon: '🔧'
             }
         ]
     },
-    
+
     // 설정 및 가이드 카테고리
     'guide': {
         title: '📝 설정 및 가이드',
         subtitle: '실무에서 바로 쓰는 체크리스트와 가이드를 모았습니다.',
         sectionTitle: '가이드 목록',
         items: [
-            { 
-                id: 'program-guide', 
+            {
+                id: 'program-guide',
                 name: '필수 확장 프로그램 가이드',
                 icon: '💡'
             }
@@ -122,12 +122,12 @@ const gtmSidebarData = {
 };
 
 const dataLayerSidebarData = {
-    title: 'DataLayer',
-    subtitle: '구조화된 데이터 전송을 위한 구현',
-    sectionTitle: 'DataLayer',
+    title: '데이터 레이어 설계',
+    subtitle: '웹사이트와 GTM 간의 안전한 데이터 바구니',
+    sectionTitle: '데이터 레이어',
     items: [
-        { id: 'data-layer', name: 'DataLayer 개요', icon: '🗂️', category: 'data-center' },
-        { id: 'data-layer-intro', name: '데이터 레이어 소개', icon: '🗂️', category: 'data-center' }
+        { id: 'data-layer-intro', name: '데이터 레이어란?', icon: '📋', category: 'data-center' },
+        { id: 'data-layer', name: '데이터 레이어 실전', icon: '💡', category: 'data-center' }
     ]
 };
 
@@ -247,9 +247,9 @@ const pageContents = {
                     <p>페이지 URL을 입력하면 사용 중인 광고 매체 트랙 태그를 실시간으로 분석합니다</p>
                 </div>
 
-                <div class="usage-guide">
+                <div class="usage-guide tag-section">
                     <h3>💡 사용 방법</h3>
-                    <ul>
+                    <ul class="info-list">
                         <li>분석하려는 웹페이지의 전체 URL을 입력하세요 (https:// 포함)</li>
                         <li>페이지의 HTML 소스코드에서 트래킹 코드를 실시간으로 검색합니다</li>
                         <li>각 매체의 ID와 호출되는 이벤트 이름을 확인할 수 있습니다</li>
@@ -422,18 +422,75 @@ const pageContents = {
                     <p>디버깅에 필요한 필수 확장 프로그램 설치 및 사용 방법을 안내합니다.</p>
                 </div>
                 
-                <div class="tool-list">
-                    <div class="tool-card">
-                        <h3>Tag Assistant</h3>
-                        <p>Google 태그를 검증하는 공식 도구</p>
+                <div class="tag-section">
+                    <h2>1. Tag Assistant</h2>
+                    <p class="section-description">Google 태그(GA4, Google Ads, GTM 등)가 웹사이트에서 어떻게 작동하는지 실시간으로 확인하고 디버깅할 수 있는 공식 확장 프로그램입니다.</p>
+                    <div class="notice-box notice-point">
+                        <p class="notice-title">주요 기능</p>
+                        <ul class="notice-list">
+                            <li>GTM 미리보기 및 디버그 모드와 연동</li>
+                            <li>실행된 태그 및 발생한 이벤트(DataLayer) 순차적 확인</li>
+                            <li>태그 실행 오류 및 중복 설치 진단</li>
+                        </ul>
                     </div>
-                    <div class="tool-card">
-                        <h3>Facebook Pixel Helper</h3>
-                        <p>Meta 픽셀 설치를 확인하는 도구</p>
+                    <h3>💡 사용 방법</h3>
+                    <ol class="info-list">
+                        <li>Chrome 웹 스토어에서 <strong>Tag Assistant</strong>를 설치합니다.</li>
+                        <li>GTM 작업 공간에서 [미리보기(Preview)] 버튼을 클릭하거나, Tag Assistant 사이트(tagassistant.google.com)에 접속합니다.</li>
+                        <li>분석할 웹사이트 URL을 입력하고 <strong>[Connect]</strong>를 클릭합니다.</li>
+                        <li>새 창으로 열린 웹사이트에서 행동(클릭, 페이지 이동 등)을 수행합니다.</li>
+                        <li>Tag Assistant 창에서 왼쪽 타임라인에 발생한 이벤트를 클릭하여 어떤 태그가 실행(Fired)되었는지 확인합니다.</li>
+                    </ol>
+                    <div class="advanced-actions" style="margin-top: 1rem;">
+                        <a class="secondary-button" href="https://chromewebstore.google.com/detail/tag-assistant/kejbdjndbnbjgmefkgdddjlbokphdefk" target="_blank" rel="noopener noreferrer">Chrome 웹 스토어에서 설치 ↗</a>
                     </div>
-                    <div class="tool-card">
-                        <h3>GTM/GA4 Debugger</h3>
-                        <p>태그 실행 로그를 빠르게 확인하는 도구</p>
+                </div>
+
+                <div class="tag-section">
+                    <h2>2. Meta Pixel Helper</h2>
+                    <p class="section-description">현재 웹페이지에 Meta(Facebook) 픽셀이 정상적으로 설치되어 있는지 확인하고, 이벤트가 올바른 파라미터와 함께 전송되는지 검증하는 공식 도구입니다.</p>
+                    <div class="notice-box notice-point">
+                        <p class="notice-title">주요 기능</p>
+                        <ul class="notice-list">
+                            <li>설치된 픽셀 ID 확인</li>
+                            <li>전송된 표준 이벤트(PageView, Purchase 등) 및 맞춤 이벤트 확인</li>
+                            <li>이벤트 누락, 파라미터 오류 등 문제 해결 팁 제공</li>
+                        </ul>
+                    </div>
+                    <h3>💡 사용 방법</h3>
+                    <ol class="info-list">
+                        <li>Chrome 웹 스토어에서 <strong>Meta Pixel Helper</strong>를 설치합니다.</li>
+                        <li>픽셀이 설치된 웹사이트에 접속합니다.</li>
+                        <li>브라우저 우측 상단의 확장 프로그램 아이콘 <code>&lt;/ &gt;</code>이 파란색으로 활성화되는지 확인합니다. (뱃지의 숫자는 발생한 이벤트의 수를 의미합니다.)</li>
+                        <li>아이콘을 클릭하여 로드된 픽셀 ID와 이벤트 리스트(예: PageView)를 확인합니다.</li>
+                        <li>장바구니 담기, 구매 등의 행동을 한 후, 이벤트 목록에 해당 행동 결과가 잘 수집되는지 점검합니다.</li>
+                    </ol>
+                    <div class="advanced-actions" style="margin-top: 1rem;">
+                        <a class="secondary-button" href="https://chromewebstore.google.com/detail/meta-pixel-helper/fdgfkebogiimcoedlicjlajpkdmockpc" target="_blank" rel="noopener noreferrer">Chrome 웹 스토어에서 설치 ↗</a>
+                    </div>
+                </div>
+
+                <div class="tag-section">
+                    <h2>3. Omnibug</h2>
+                    <p class="section-description">GA4, GTM, Meta, TikTok 등 광범위한 트래킹 태그 네트워크 요청을 캡처하고 디코딩해 주는 강력한 서드파티 디버깅 도구입니다.</p>
+                    <div class="notice-box notice-point">
+                        <p class="notice-title">주요 기능</p>
+                        <ul class="notice-list">
+                            <li>페이지 이동(Navigation) 시에도 이전 이벤트 로그 보존(Preserve log) 옵션 제공</li>
+                            <li>다양한 매체(Google, Meta, TikTok, Adobe 등)의 태그 자동 파싱 및 시각화</li>
+                            <li>GTM 미리보기 모드 없이도 실시간 파라미터 및 데이터 레이어 분석</li>
+                        </ul>
+                    </div>
+                    <h3>💡 사용 방법</h3>
+                    <ol class="info-list">
+                        <li>Chrome 웹 스토어에서 <strong>Omnibug</strong>를 설치합니다.</li>
+                        <li>키보드의 <code>F12</code>를 눌러 브라우저 개발자 도구를 엽니다.</li>
+                        <li>개발자 도구 상단의 여러 탭(Elements, Console 등) 중 <strong>[Omnibug]</strong> 탭을 클릭하여 엽니다. (탭이 안 보일 경우 <code>&gt;&gt;</code> 아이콘 클릭)</li>
+                        <li>웹페이지를 새로고침(F5) 하거나 클릭 이벤트를 발생시키면, Omnibug 탭에 다양한 매체로 전송되는 태그들이 실시간으로 기록됩니다.</li>
+                        <li>기록된 로그를 클릭하면 전송된 이벤트 파라미터를 표 형태로 쉽게 확인할 수 있습니다.</li>
+                    </ol>
+                    <div class="advanced-actions" style="margin-top: 1rem;">
+                        <a class="secondary-button" href="https://chromewebstore.google.com/detail/omnibug/bknpehncffejahipecakbfkomebjmokl" target="_blank" rel="noopener noreferrer">Chrome 웹 스토어에서 설치 ↗</a>
                     </div>
                 </div>
             </div>
