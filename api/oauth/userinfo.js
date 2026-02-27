@@ -10,7 +10,7 @@ function parseCookies(header) {
     return list;
 }
 
-export default async function handler(req, res) {
+module.exports = async function handler(req, res) {
     const cookies = parseCookies(req.headers.cookie);
     const accessToken = cookies.ga4_access_token;
     if (!accessToken) {

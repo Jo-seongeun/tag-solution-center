@@ -8,7 +8,7 @@ function setCookie(res, name, value, options = {}) {
     res.setHeader('Set-Cookie', parts.join('; '));
 }
 
-export default function handler(req, res) {
+module.exports = function handler(req, res) {
     setCookie(res, 'ga4_access_token', '', {
         httpOnly: true,
         secure: true,

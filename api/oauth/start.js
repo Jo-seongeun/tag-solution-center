@@ -1,4 +1,4 @@
-import crypto from 'crypto';
+const crypto = require('crypto');
 
 function buildAuthUrl({ clientId, redirectUri, state }) {
     const params = new URLSearchParams({
@@ -29,7 +29,7 @@ function setCookie(res, name, value, options = {}) {
     res.setHeader('Set-Cookie', parts.join('; '));
 }
 
-export default function handler(req, res) {
+module.exports = function handler(req, res) {
     const clientId = process.env.GOOGLE_CLIENT_ID;
     const redirectUri = process.env.GOOGLE_REDIRECT_URI;
 

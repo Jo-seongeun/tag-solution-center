@@ -20,7 +20,7 @@ function setCookie(res, name, value, options = {}) {
     res.setHeader('Set-Cookie', parts.join('; '));
 }
 
-export default async function handler(req, res) {
+module.exports = async function handler(req, res) {
     const clientId = process.env.GOOGLE_CLIENT_ID;
     const clientSecret = process.env.GOOGLE_CLIENT_SECRET;
     const redirectUri = process.env.GOOGLE_REDIRECT_URI;
