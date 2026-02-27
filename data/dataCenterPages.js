@@ -1320,8 +1320,23 @@ window.dataLayer.push({
 
                     <div class="article-section">
                         <h2>1.8. 개인정보 처리방침 변경 안내</h2>
-                        <p>본 개인정보 처리방침은 법령 및 정책 또는 보안기술의 변경에 따라 내용의 추가, 삭제 및 수정이 있을 시에는 변경사항의 시행일 7일 전부터 사이트의 공지사항을 통해 고지할 것입니다.</p>
+                        <p>본 개인정보 처리방침은 법령 및 정책 또는 보안기술의 변경에 따라 내용의 추가, 삭제 및 수정이 있을 시에는 변경사항의 시행일 7일 전부터 사이트의 공지사항 고지할 것입니다.</p>
                     </div>
+                </div>
+            `
+        },
+        'ga4-oauth-success': {
+            title: '구글 연동 완료',
+            content: `
+                <div class="page-content" style="text-align: center; padding: 50px;">
+                    <h2>✅ 구글 계정 연동 성공</h2>
+                    <p style="margin-top: 15px; color: #4b5563;">인증이 성공적으로 완료되었습니다. <br>이 창은 잠시 후 자동으로 닫힙니다.</p>
+                    <script>
+                        // 약간의 딜레이 후 팝업 닫기
+                        setTimeout(() => {
+                            window.close();
+                        }, 1000);
+                    </script>
                 </div>
             `
         }

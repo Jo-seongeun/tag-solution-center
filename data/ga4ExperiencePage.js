@@ -382,8 +382,37 @@
         };
 
         loginBtn.addEventListener('click', () => {
-            const returnTo = `${window.location.pathname}?page=ga4-experience&category=quick-menu`;
-            window.location.href = `/api/oauth/start?returnTo=${encodeURIComponent(returnTo)}`;
+            const returnTo = `${window.location.origin}${window.location.pathname}?page=ga4-oauth-success`;
+            const authUrl = `${window.location.origin}/api/oauth/start?returnTo=${encodeURIComponent(returnTo)}`;
+
+            const width = 500;
+            const height = 600;
+            const left = (window.innerWidth / 2) - (width / 2);
+            const top = (window.innerHeight / 2) - (height / 2);
+
+            const authWindow = window.open(
+                authUrl,
+                'ga4_oauth_window',
+                `width=${width},height=${height},top=${top},left=${left},scrollbars=yes,status=yes,resizable=yes`
+            );
+
+            if (!authWindow || authWindow.closed || typeof authWindow.closed === 'undefined') {
+                alert('팝업 차단이 감지되었습니다. 원활한 로그인을 위해 현재 사이트의 팝업 차단을 해제해 주세요.');
+                // 팝업 차단 시 기본 페이지 이동 (대시보드로 복귀하도록)
+                const fallbackReturnTo = `${window.location.origin}${window.location.pathname}?page=ga4-experience&category=quick-menu`;
+                window.location.href = `/api/oauth/start?returnTo=${encodeURIComponent(fallbackReturnTo)}`;
+                return;
+            }
+
+            const timer = setInterval(async () => {
+                if (authWindow.closed) {
+                    clearInterval(timer);
+                    const loggedIn = await isLoggedIn();
+                    if (loggedIn) {
+                        window.location.reload();
+                    }
+                }
+            }, 500);
         });
 
         logoutBtn.addEventListener('click', async () => {
