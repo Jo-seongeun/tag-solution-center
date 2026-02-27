@@ -39,9 +39,8 @@
 
                 <div class="ga4-auth-section" id="ga4AuthSection">
                     <h3>시작하기</h3>
-                    <p>구글 계정으로 로그인하여 GA4 데이터에 접근하세요.</p>
+                    <p>GA4 계정으로 로그인해서 데이터를 직접 확인하실 수 있습니다.</p>
                     <button class="primary-button ga4-login-button" id="ga4LoginBtn" disabled>Google로 로그인</button>
-                    <div class="ga4-error-message" id="ga4ErrorMessage">OAuth 연동 준비 중입니다.</div>
                 </div>
 
                 <div class="ga4-account-section" id="ga4AccountSection">
