@@ -41,6 +41,7 @@
                     <h3>시작하기</h3>
                     <p>GA4 계정으로 로그인해서 데이터를 직접 확인하실 수 있습니다.</p>
                     <button class="primary-button ga4-login-button" id="ga4LoginBtn" disabled>Google로 로그인</button>
+                    <div class="ga4-error-message" id="ga4ErrorMessage" style="color: #dc2626; margin-top: 10px;"></div>
                 </div>
 
                 <div class="ga4-account-section" id="ga4AccountSection">
@@ -197,7 +198,7 @@
             geo: document.getElementById('ga4GeoTable')
         };
 
-        if (!statusEl || !loginBtn || !errorEl || !accountSection || !accountSelect || !propertySelect || !loadBtn || !logoutBtn || !startDateInput || !endDateInput || !quick7 || !quick30 || !quick90) {
+        if (!statusEl || !loginBtn || !accountSection || !accountSelect || !propertySelect || !loadBtn || !logoutBtn || !startDateInput || !endDateInput || !quick7 || !quick30 || !quick90) {
             return;
         }
 
@@ -209,7 +210,11 @@
         };
 
         const showError = (message) => {
-            errorEl.textContent = message;
+            if (errorEl) {
+                errorEl.textContent = message;
+            } else {
+                console.error(message);
+            }
         };
 
         const formatNumber = value => value ? Number(value).toLocaleString() : '-';
