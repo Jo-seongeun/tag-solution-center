@@ -40,9 +40,9 @@
                 <div class="ga4-auth-section" id="ga4AuthSection">
                     <h3>시작하기</h3>
                     <p>GA4 계정으로 로그인해서 데이터를 직접 확인하실 수 있습니다.</p>
-                    <div style="display: flex; gap: 10px; align-items: center; margin-bottom: 10px;">
-                        <button class="primary-button ga4-login-button" id="ga4LoginBtn" disabled>Google로 로그인</button>
-                        <button class="secondary-button" id="ga4LogoutBtn" style="display: none; background-color: #f3f4f6; color: #4b5563; border-color: #d1d5db;">로그아웃</button>
+                    <div style="display: flex; gap: 10px; align-items: stretch; margin-bottom: 10px;">
+                        <button class="primary-button ga4-login-button" id="ga4LoginBtn" style="box-sizing: border-box; display: flex; align-items: center; justify-content: center; height: 44px;" disabled>Google로 로그인</button>
+                        <button class="secondary-button" id="ga4LogoutBtn" style="display: none; box-sizing: border-box; align-items: center; justify-content: center; height: 44px; background-color: #f3f4f6; color: #4b5563; border-color: #d1d5db; margin: 0;">로그아웃</button>
                     </div>
                     <div class="ga4-error-message" id="ga4ErrorMessage" style="color: #dc2626; margin-top: 10px;"></div>
                 </div>
@@ -302,6 +302,101 @@
             container.insertAdjacentHTML('beforeend', pieChartHtml);
         };
 
+        const renderLineChart = (container, rows) => {
+            if (!container || !rows || rows.length === 0) {
+                container.textContent = '데이터 없음';
+                return;
+            }
+
+            // Sort rows by date ascending
+            rows.sort((a, b) => new Date(a.date) - new Date(b.date));
+
+            const maxUsers = Math.max(...rows.map(r => Number(r.users.toString().replace(/,/g, '')) || 0), 10);
+            const maxSessions = Math.max(...rows.map(r => Number(r.sessions.toString().replace(/,/g, '')) || 0), 10);
+            const absoluteMax = Math.max(maxUsers, maxSessions);
+
+            const width = 800;
+            const height = 300;
+            const padding = { top: 20, right: 20, bottom: 40, left: 50 };
+            const chartWidth = width - padding.left - padding.right;
+            const chartHeight = height - padding.top - padding.bottom;
+
+            const getX = (index) => padding.left + (index * (chartWidth / Math.max(rows.length - 1, 1)));
+            const getY = (value) => padding.top + chartHeight - ((value / absoluteMax) * chartHeight);
+
+            let usersPath = '';
+            let sessionsPath = '';
+            let circlesHtml = '';
+            let xAxisHtml = '';
+
+            rows.forEach((row, index) => {
+                const uVal = Number(row.users.toString().replace(/,/g, '')) || 0;
+                const sVal = Number(row.sessions.toString().replace(/,/g, '')) || 0;
+
+                const x = getX(index);
+                const uy = getY(uVal);
+                const sy = getY(sVal);
+
+                if (index === 0) {
+                    usersPath += `M ${x} ${uy}`;
+                    sessionsPath += `M ${x} ${sy}`;
+                } else {
+                    usersPath += ` L ${x} ${uy}`;
+                    sessionsPath += ` L ${x} ${sy}`;
+                }
+
+                circlesHtml += `
+                    <circle cx="${x}" cy="${uy}" r="4" fill="#3b82f6" stroke="#fff" stroke-width="2">
+                        <title>${row.date}: 사용자 ${row.users}</title>
+                    </circle>
+                    <circle cx="${x}" cy="${sy}" r="4" fill="#10b981" stroke="#fff" stroke-width="2">
+                        <title>${row.date}: 세션 ${row.sessions}</title>
+                    </circle>
+                `;
+
+                // Add date labels (skip some if too many)
+                if (rows.length <= 10 || index % Math.ceil(rows.length / 7) === 0 || index === rows.length - 1) {
+                    const shortDate = row.date.substring(4, 6) + '/' + row.date.substring(6, 8); // YYYYMMDD -> YYYY-MM-DD -> MM/DD (assuming format like 20231024 or similar, if standard Date string just slice)
+                    let displayDate = row.date;
+                    if (row.date.length === 8 && !row.date.includes('-')) displayDate = `${row.date.substring(4, 6)}/${row.date.substring(6, 8)}`;
+                    else if (row.date.includes('-')) displayDate = row.date.substring(5);
+
+                    xAxisHtml += `
+                        <text x="${x}" y="${height - 10}" font-size="12" fill="#6b7280" text-anchor="middle">${displayDate}</text>
+                    `;
+                }
+            });
+
+            // Grid lines (y-axis)
+            let gridHtml = '';
+            for (let i = 0; i <= 4; i++) {
+                const stepVal = (absoluteMax / 4) * i;
+                const y = getY(stepVal);
+                gridHtml += `
+                    <line x1="${padding.left}" y1="${y}" x2="${width - padding.right}" y2="${y}" stroke="#e5e7eb" stroke-dasharray="4" />
+                    <text x="${padding.left - 10}" y="${y + 4}" font-size="12" fill="#6b7280" text-anchor="end">${Math.round(stepVal).toLocaleString()}</text>
+                `;
+            }
+
+            const svgHtml = `
+                <div style="width: 100%; overflow-x: auto; margin-top: 10px;">
+                    <div style="display: flex; gap: 15px; justify-content: flex-end; margin-bottom: 10px; font-size: 13px;">
+                        <span style="display: flex; align-items: center; gap: 5px;"><div style="width: 12px; height: 3px; background: #3b82f6;"></div>사용자</span>
+                        <span style="display: flex; align-items: center; gap: 5px;"><div style="width: 12px; height: 3px; background: #10b981;"></div>세션</span>
+                    </div>
+                    <svg viewBox="0 0 ${width} ${height}" style="width: 100%; min-width: 500px; height: auto;">
+                        ${gridHtml}
+                        <path d="${usersPath}" fill="none" stroke="#3b82f6" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
+                        <path d="${sessionsPath}" fill="none" stroke="#10b981" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
+                        ${xAxisHtml}
+                        ${circlesHtml}
+                    </svg>
+                </div>
+            `;
+
+            container.innerHTML = svgHtml;
+        };
+
         const setQuickRange = days => {
             const end = new Date();
             const start = new Date();
@@ -405,11 +500,7 @@
                 users: formatNumber(row.metricValues[0].value),
                 sessions: formatNumber(row.metricValues[1].value)
             }));
-            renderListTable(tables.trend, trendRows, [
-                { key: 'date', label: '날짜' },
-                { key: 'users', label: '사용자', isBar: true },
-                { key: 'sessions', label: '세션', isBar: true }
-            ]);
+            renderLineChart(tables.trend, trendRows);
 
             const deviceRows = (data.deviceReport?.rows || []).map(row => ({
                 device: row.dimensionValues[0].value,
@@ -549,7 +640,7 @@
             if (loggedIn) {
                 loginBtn.disabled = true;
                 loginBtn.textContent = '로그인 완료';
-                logoutBtn.style.display = 'inline-block';
+                logoutBtn.style.display = 'flex';
                 accountSection.style.display = 'block';
                 try {
                     await loadAccounts();
