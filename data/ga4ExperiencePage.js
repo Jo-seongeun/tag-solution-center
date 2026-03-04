@@ -82,60 +82,70 @@
                     </div>
                 </div>
 
-                <div class="ga4-dashboard-preview" id="ga4Dashboard">
-                    <div class="ga4-metrics-grid">
-                        <div class="ga4-metric-card">
-                            <h4>총 사용자</h4>
-                            <div class="ga4-metric-value" id="ga4TotalUsers">-</div>
-                            <div class="ga4-metric-meta">조회 기간 합계</div>
-                        </div>
-                        <div class="ga4-metric-card">
-                            <h4>신규 사용자</h4>
-                            <div class="ga4-metric-value" id="ga4NewUsers">-</div>
-                            <div class="ga4-metric-meta">조회 기간 합계</div>
-                        </div>
-                        <div class="ga4-metric-card">
-                            <h4>세션수</h4>
-                            <div class="ga4-metric-value" id="ga4Sessions">-</div>
-                            <div class="ga4-metric-meta">조회 기간 합계</div>
-                        </div>
-                        <div class="ga4-metric-card">
-                            <h4>조회수</h4>
-                            <div class="ga4-metric-value" id="ga4PageViews">-</div>
-                            <div class="ga4-metric-meta">조회 기간 합계</div>
-                        </div>
-                        <div class="ga4-metric-card">
-                            <h4>참여율</h4>
-                            <div class="ga4-metric-value" id="ga4EngagementRate">-</div>
-                            <div class="ga4-metric-meta">조회 기간 평균</div>
-                        </div>
-                        <div class="ga4-metric-card">
-                            <h4>이탈률</h4>
-                            <div class="ga4-metric-value" id="ga4BounceRate">-</div>
-                            <div class="ga4-metric-meta">조회 기간 평균</div>
-                        </div>
-                        <div class="ga4-metric-card">
-                            <h4>세션당 페이지 뷰</h4>
-                            <div class="ga4-metric-value" id="ga4PagesPerSession">-</div>
-                            <div class="ga4-metric-meta">조회 기간 평균</div>
-                        </div>
-                        <div class="ga4-metric-card">
-                            <h4>평균 세션 시간</h4>
-                            <div class="ga4-metric-value" id="ga4AvgSessionDuration">-</div>
-                            <div class="ga4-metric-meta">조회 기간 평균</div>
-                        </div>
+                    <div style="display: flex; justify-content: space-between; align-items: flex-end; margin-top: 30px; margin-bottom: 15px; display: none;" id="ga4DashboardHeader">
+                        <h3 style="margin: 0; font-size: 1.25rem;">GA4 리포트 대시보드</h3>
+                        <span style="color: #6b7280; font-size: 13px;" id="ga4LastUpdate">마지막 업데이트: -</span>
                     </div>
 
-                    <div class="ga4-chart-grid">
-                        <div class="ga4-chart-card">
+                    <div class="ga4-dashboard-preview" id="ga4Dashboard">
+                        <div class="ga4-metrics-grid">
+                            <div class="ga4-metric-card">
+                                <h4>총 사용자</h4>
+                                <div class="ga4-metric-value" id="ga4TotalUsers">-</div>
+                                <div class="ga4-metric-meta">조회 기간 합계</div>
+                            </div>
+                            <div class="ga4-metric-card">
+                                <h4>신규 사용자</h4>
+                                <div class="ga4-metric-value" id="ga4NewUsers">-</div>
+                                <div class="ga4-metric-meta">조회 기간 합계</div>
+                            </div>
+                            <div class="ga4-metric-card">
+                                <h4>세션수</h4>
+                                <div class="ga4-metric-value" id="ga4Sessions">-</div>
+                                <div class="ga4-metric-meta">조회 기간 합계</div>
+                            </div>
+                            <div class="ga4-metric-card">
+                                <h4>조회수</h4>
+                                <div class="ga4-metric-value" id="ga4PageViews">-</div>
+                                <div class="ga4-metric-meta">조회 기간 합계</div>
+                            </div>
+                            <div class="ga4-metric-card">
+                                <h4>참여율</h4>
+                                <div class="ga4-metric-value" id="ga4EngagementRate">-</div>
+                                <div class="ga4-metric-meta">조회 기간 평균</div>
+                            </div>
+                            <div class="ga4-metric-card">
+                                <h4>이탈률</h4>
+                                <div class="ga4-metric-value" id="ga4BounceRate">-</div>
+                                <div class="ga4-metric-meta">조회 기간 평균</div>
+                            </div>
+                            <div class="ga4-metric-card">
+                                <h4>세션당 페이지 뷰</h4>
+                                <div class="ga4-metric-value" id="ga4PagesPerSession">-</div>
+                                <div class="ga4-metric-meta">조회 기간 평균</div>
+                            </div>
+                            <div class="ga4-metric-card">
+                                <h4>평균 세션 시간</h4>
+                                <div class="ga4-metric-value" id="ga4AvgSessionDuration">-</div>
+                                <div class="ga4-metric-meta">조회 기간 평균</div>
+                            </div>
+                        </div>
+
+                        <div class="ga4-table-card">
                             <h4>📅 일별 사용자 및 세션 추이</h4>
                             <div class="ga4-table-placeholder" id="ga4TrendTable">데이터 없음</div>
                         </div>
-                        <div class="ga4-chart-card">
-                            <h4>📱 디바이스별 분석</h4>
-                            <div class="ga4-table-placeholder" id="ga4DeviceTable">데이터 없음</div>
+
+                        <div class="ga4-chart-grid">
+                            <div class="ga4-chart-card">
+                                <h4>📱 디바이스별 분석</h4>
+                                <div class="ga4-table-placeholder" id="ga4DeviceTable">데이터 없음</div>
+                            </div>
+                            <div class="ga4-chart-card">
+                                <h4>🌐 브라우저 분석</h4>
+                                <div class="ga4-table-placeholder" id="ga4BrowserTable">데이터 없음</div>
+                            </div>
                         </div>
-                    </div>
 
                     <div class="ga4-table-card">
                         <h4>🌐 유입 채널 분석</h4>
@@ -183,6 +193,8 @@
         const quick7 = document.getElementById('ga4Quick7');
         const quick30 = document.getElementById('ga4Quick30');
         const quick90 = document.getElementById('ga4Quick90');
+        const headerEl = document.getElementById('ga4DashboardHeader');
+        const lastUpdateEl = document.getElementById('ga4LastUpdate');
 
         const metrics = {
             totalUsers: document.getElementById('ga4TotalUsers'),
@@ -198,13 +210,14 @@
         const tables = {
             trend: document.getElementById('ga4TrendTable'),
             device: document.getElementById('ga4DeviceTable'),
+            browser: document.getElementById('ga4BrowserTable'),
             channel: document.getElementById('ga4ChannelTable'),
             page: document.getElementById('ga4PageTable'),
             event: document.getElementById('ga4EventTable'),
             geo: document.getElementById('ga4GeoTable')
         };
 
-        if (!statusEl || !loginBtn || !accountSection || !accountSelect || !propertySelect || !loadBtn || !logoutBtn || !startDateInput || !endDateInput || !quick7 || !quick30 || !quick90 || !resetBtn) {
+        if (!statusEl || !loginBtn || !accountSection || !accountSelect || !propertySelect || !loadBtn || !logoutBtn || !startDateInput || !endDateInput || !quick7 || !quick30 || !quick90 || !resetBtn || !headerEl || !lastUpdateEl) {
             return;
         }
 
@@ -480,11 +493,15 @@
             sessionStorage.setItem('ga4__startDate', startDateInput.value);
             sessionStorage.setItem('ga4__endDate', endDateInput.value);
 
-            renderReportData(data);
+            const now = new Date();
+            const timestamp = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}-${String(now.getDate()).padStart(2, '0')} ${String(now.getHours()).padStart(2, '0')}:${String(now.getMinutes()).padStart(2, '0')}:${String(now.getSeconds()).padStart(2, '0')}`;
+            sessionStorage.setItem('ga4__lastUpdate', timestamp);
+
+            renderReportData(data, timestamp);
             loadBtn.disabled = false;
         };
 
-        const renderReportData = (data) => {
+        const renderReportData = (data, timestampOptions) => {
             const metricRow = data.metricsReport?.rows?.[0]?.metricValues || [];
             const ttUsers = Number(metricRow[0]?.value) || 1;
             const ttSessions = Number(metricRow[2]?.value) || 1;
@@ -522,6 +539,22 @@
                 { key: 'ratio', label: '비율', align: 'right' }
             ]);
             renderPieChart(tables.device, deviceRows, 'users', 'device');
+
+            const browserRows = (data.browserReport?.rows || []).map((row, i) => {
+                const val = Number(row.metricValues[0].value) || 0;
+                return {
+                    rank: i + 1,
+                    browser: row.dimensionValues[0].value,
+                    sessions: formatNumber(val),
+                    ratio: ((val / ttSessions) * 100).toFixed(1) + '%'
+                };
+            }).slice(0, 10);
+            renderListTable(tables.browser, browserRows, [
+                { key: 'rank', label: '순위', align: 'center', bold: true },
+                { key: 'browser', label: '브라우저' },
+                { key: 'sessions', label: '세션 수', isBar: true },
+                { key: 'ratio', label: '비율', align: 'right' }
+            ]);
 
             const channelRows = (data.channelReport?.rows || []).map((row, i) => {
                 const val = Number(row.metricValues[0].value) || 0;
@@ -600,6 +633,8 @@
             setStatus('리포트 로드 완료 ✅');
             showError('');
             resetBtn.style.display = 'inline-block';
+            headerEl.style.display = 'flex';
+            lastUpdateEl.textContent = `마지막 업데이트: ${timestampOptions || '-'}`;
         };
 
         loginBtn.addEventListener('click', () => {
@@ -664,12 +699,14 @@
             sessionStorage.removeItem('ga4__propertyId');
             sessionStorage.removeItem('ga4__startDate');
             sessionStorage.removeItem('ga4__endDate');
+            sessionStorage.removeItem('ga4__lastUpdate');
 
             accountSelect.value = '';
             propertySelect.innerHTML = '<option value="">먼저 계정을 선택하세요</option>';
             initDate();
             loadBtn.disabled = true;
             resetBtn.style.display = 'none';
+            headerEl.style.display = 'none';
 
             Object.values(metrics).forEach(el => el.textContent = '-');
             Object.values(tables).forEach(el => el.textContent = '데이터 없음');
@@ -700,6 +737,7 @@
                     const savedPropertyId = sessionStorage.getItem('ga4__propertyId');
                     const savedStart = sessionStorage.getItem('ga4__startDate');
                     const savedEnd = sessionStorage.getItem('ga4__endDate');
+                    const savedLastUpdate = sessionStorage.getItem('ga4__lastUpdate');
 
                     if (savedReportData && savedAccountId) {
                         accountSelect.value = savedAccountId;
@@ -709,7 +747,7 @@
                         if (savedEnd) endDateInput.value = savedEnd;
 
                         loadBtn.disabled = !propertySelect.value;
-                        renderReportData(JSON.parse(savedReportData));
+                        renderReportData(JSON.parse(savedReportData), savedLastUpdate);
                     }
                 } catch (err) {
                     showError(err.message);
