@@ -17,7 +17,16 @@ function setCookie(res, name, value, options = {}) {
     if (options.sameSite) parts.push(`SameSite=${options.sameSite}`);
     if (options.path) parts.push(`Path=${options.path}`);
     if (typeof options.maxAge === 'number') parts.push(`Max-Age=${options.maxAge}`);
-    res.setHeader('Set-Cookie', parts.join('; '));
+
+    const cookieString = parts.join('; ');
+    let existingCookies = res.getHeader('Set-Cookie');
+    if (!existingCookies) {
+        res.setHeader('Set-Cookie', cookieString);
+    } else if (Array.isArray(existingCookies)) {
+        res.setHeader('Set-Cookie', [...existingCookies, cookieString]);
+    } else {
+        res.setHeader('Set-Cookie', [existingCookies, cookieString]);
+    }
 }
 
 module.exports = async function handler(req, res) {
