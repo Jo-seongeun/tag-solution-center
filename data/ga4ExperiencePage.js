@@ -40,9 +40,9 @@
                 <div class="ga4-auth-section" id="ga4AuthSection">
                     <h3>시작하기</h3>
                     <p>GA4 계정으로 로그인해서 데이터를 직접 확인하실 수 있습니다.</p>
-                    <div style="display: flex; gap: 10px; align-items: stretch; margin-bottom: 10px;">
-                        <button class="primary-button ga4-login-button" id="ga4LoginBtn" style="box-sizing: border-box; display: flex; align-items: center; justify-content: center; height: 44px;" disabled>Google로 로그인</button>
-                        <button class="secondary-button" id="ga4LogoutBtn" style="display: none; box-sizing: border-box; align-items: center; justify-content: center; height: 44px; background-color: #f3f4f6; color: #4b5563; border-color: #d1d5db; margin: 0;">로그아웃</button>
+                    <div style="display: flex; gap: 10px; align-items: center; margin-bottom: 10px;">
+                        <button class="primary-button ga4-login-button" id="ga4LoginBtn" style="padding: 0 1.5rem; box-sizing: border-box; display: flex; align-items: center; justify-content: center; height: 44px;" disabled>Google로 로그인</button>
+                        <button class="secondary-button" id="ga4LogoutBtn" style="display: none; padding: 0 1.5rem; box-sizing: border-box; align-items: center; justify-content: center; height: 44px; background-color: #f3f4f6; color: #4b5563; border-color: #d1d5db; margin: 0;">로그아웃</button>
                     </div>
                     <div class="ga4-error-message" id="ga4ErrorMessage" style="color: #dc2626; margin-top: 10px;"></div>
                 </div>
