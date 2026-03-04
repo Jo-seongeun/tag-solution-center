@@ -19,25 +19,6 @@ function buildAuthUrl({ clientId, redirectUri, state }) {
     return `https://accounts.google.com/o/oauth2/v2/auth?${params.toString()}`;
 }
 
-function setCookie(res, name, value, options = {}) {
-    const parts = [`${name}=${value}`];
-    if (options.httpOnly) parts.push('HttpOnly');
-    if (options.secure) parts.push('Secure');
-    if (options.sameSite) parts.push(`SameSite=${options.sameSite}`);
-    if (options.path) parts.push(`Path=${options.path}`);
-    if (typeof options.maxAge === 'number') parts.push(`Max-Age=${options.maxAge}`);
-
-    const cookieString = parts.join('; ');
-    let existingCookies = res.getHeader('Set-Cookie');
-    if (!existingCookies) {
-        res.setHeader('Set-Cookie', cookieString);
-    } else if (Array.isArray(existingCookies)) {
-        res.setHeader('Set-Cookie', [...existingCookies, cookieString]);
-    } else {
-        res.setHeader('Set-Cookie', [existingCookies, cookieString]);
-    }
-}
-
 module.exports = function handler(req, res) {
     const clientId = process.env.GOOGLE_CLIENT_ID;
     const redirectUri = process.env.GOOGLE_REDIRECT_URI;
@@ -50,23 +31,12 @@ module.exports = function handler(req, res) {
     const state = crypto.randomBytes(16).toString('hex');
     const returnTo = req.query.returnTo || '/?page=ga4-experience&category=quick-menu';
 
-    setCookie(res, 'ga4_oauth_state', state, {
-        httpOnly: true,
-        secure: true,
-        sameSite: 'Lax',
-        path: '/',
-        maxAge: 60 * 10
-    });
+    const cookieState = `ga4_oauth_state=${state}; HttpOnly; Secure; SameSite=None; Path=/; Max-Age=600`;
+    const cookieReturn = `ga4_oauth_return=${encodeURIComponent(returnTo)}; HttpOnly; Secure; SameSite=None; Path=/; Max-Age=600`;
 
-    setCookie(res, 'ga4_oauth_return', encodeURIComponent(returnTo), {
-        httpOnly: true,
-        secure: true,
-        sameSite: 'Lax',
-        path: '/',
-        maxAge: 60 * 10
-    });
+    res.setHeader('Set-Cookie', [cookieState, cookieReturn]);
 
     const authUrl = buildAuthUrl({ clientId, redirectUri, state });
-    res.writeHead(302, { Location: authUrl });
-    res.end();
+    res.setHeader('Location', authUrl);
+    res.status(302).end();
 }

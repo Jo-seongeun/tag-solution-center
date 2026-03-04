@@ -10,25 +10,6 @@ function parseCookies(header) {
     return list;
 }
 
-function setCookie(res, name, value, options = {}) {
-    const parts = [`${name}=${value}`];
-    if (options.httpOnly) parts.push('HttpOnly');
-    if (options.secure) parts.push('Secure');
-    if (options.sameSite) parts.push(`SameSite=${options.sameSite}`);
-    if (options.path) parts.push(`Path=${options.path}`);
-    if (typeof options.maxAge === 'number') parts.push(`Max-Age=${options.maxAge}`);
-
-    const cookieString = parts.join('; ');
-    let existingCookies = res.getHeader('Set-Cookie');
-    if (!existingCookies) {
-        res.setHeader('Set-Cookie', cookieString);
-    } else if (Array.isArray(existingCookies)) {
-        res.setHeader('Set-Cookie', [...existingCookies, cookieString]);
-    } else {
-        res.setHeader('Set-Cookie', [existingCookies, cookieString]);
-    }
-}
-
 module.exports = async function handler(req, res) {
     const clientId = process.env.GOOGLE_CLIENT_ID;
     const clientSecret = process.env.GOOGLE_CLIENT_SECRET;
@@ -71,34 +52,16 @@ module.exports = async function handler(req, res) {
         }
 
         const maxAge = tokenData.expires_in ? Number(tokenData.expires_in) : 3600;
-
-        setCookie(res, 'ga4_access_token', tokenData.access_token, {
-            httpOnly: true,
-            secure: true,
-            sameSite: 'Lax',
-            path: '/',
-            maxAge
-        });
-
-        setCookie(res, 'ga4_oauth_state', '', {
-            httpOnly: true,
-            secure: true,
-            sameSite: 'Lax',
-            path: '/',
-            maxAge: 0
-        });
-
         const returnTo = cookies.ga4_oauth_return ? decodeURIComponent(cookies.ga4_oauth_return) : '/?page=ga4-experience&category=quick-menu';
-        setCookie(res, 'ga4_oauth_return', '', {
-            httpOnly: true,
-            secure: true,
-            sameSite: 'Lax',
-            path: '/',
-            maxAge: 0
-        });
 
-        res.writeHead(302, { Location: returnTo });
-        res.end();
+        const cookieToken = `ga4_access_token=${tokenData.access_token}; HttpOnly; Secure; SameSite=None; Path=/; Max-Age=${maxAge}`;
+        const cookieStateClear = `ga4_oauth_state=; HttpOnly; Secure; SameSite=None; Path=/; Max-Age=0`;
+        const cookieReturnClear = `ga4_oauth_return=; HttpOnly; Secure; SameSite=None; Path=/; Max-Age=0`;
+
+        res.setHeader('Set-Cookie', [cookieToken, cookieStateClear, cookieReturnClear]);
+
+        res.setHeader('Location', returnTo);
+        res.status(302).end();
     } catch (error) {
         res.status(500).send('OAuth 처리 중 오류가 발생했습니다.');
     }
