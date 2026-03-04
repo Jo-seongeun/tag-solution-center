@@ -40,7 +40,10 @@
                 <div class="ga4-auth-section" id="ga4AuthSection">
                     <h3>시작하기</h3>
                     <p>GA4 계정으로 로그인해서 데이터를 직접 확인하실 수 있습니다.</p>
-                    <button class="primary-button ga4-login-button" id="ga4LoginBtn" disabled>Google로 로그인</button>
+                    <div style="display: flex; gap: 10px; align-items: center; margin-bottom: 10px;">
+                        <button class="primary-button ga4-login-button" id="ga4LoginBtn" disabled>Google로 로그인</button>
+                        <button class="secondary-button" id="ga4LogoutBtn" style="display: none; background-color: #f3f4f6; color: #4b5563; border-color: #d1d5db;">로그아웃</button>
+                    </div>
                     <div class="ga4-error-message" id="ga4ErrorMessage" style="color: #dc2626; margin-top: 10px;"></div>
                 </div>
 
@@ -73,8 +76,10 @@
                         <button class="secondary-button" id="ga4Quick30">최근 30일</button>
                         <button class="secondary-button" id="ga4Quick90">최근 90일</button>
                     </div>
-                    <button class="primary-button" id="ga4LoadReportBtn" disabled>📊 리포트 불러오기</button>
-                    <button class="secondary-button" id="ga4LogoutBtn">로그아웃</button>
+                    <div style="display: flex; gap: 10px; margin-top: 15px;">
+                        <button class="primary-button" id="ga4LoadReportBtn" disabled>📊 리포트 불러오기</button>
+                        <button class="secondary-button" id="ga4ResetBtn" style="display: none;">초기화</button>
+                    </div>
                 </div>
 
                 <div class="ga4-dashboard-preview" id="ga4Dashboard">
@@ -172,6 +177,7 @@
         const propertySelect = document.getElementById('ga4PropertySelect');
         const loadBtn = document.getElementById('ga4LoadReportBtn');
         const logoutBtn = document.getElementById('ga4LogoutBtn');
+        const resetBtn = document.getElementById('ga4ResetBtn');
         const startDateInput = document.getElementById('ga4StartDate');
         const endDateInput = document.getElementById('ga4EndDate');
         const quick7 = document.getElementById('ga4Quick7');
@@ -198,7 +204,7 @@
             geo: document.getElementById('ga4GeoTable')
         };
 
-        if (!statusEl || !loginBtn || !accountSection || !accountSelect || !propertySelect || !loadBtn || !logoutBtn || !startDateInput || !endDateInput || !quick7 || !quick30 || !quick90) {
+        if (!statusEl || !loginBtn || !accountSection || !accountSelect || !propertySelect || !loadBtn || !logoutBtn || !startDateInput || !endDateInput || !quick7 || !quick30 || !quick90 || !resetBtn) {
             return;
         }
 
@@ -234,9 +240,66 @@
                 container.textContent = '데이터 없음';
                 return;
             }
+
+            const maxValues = {};
+            columns.forEach(col => {
+                if (col.isBar) {
+                    maxValues[col.key] = Math.max(...rows.map(r => Number(r[col.key].toString().replace(/,/g, '')) || 0), 1);
+                }
+            });
+
             const header = `<thead><tr>${columns.map(col => `<th>${col.label}</th>`).join('')}</tr></thead>`;
-            const body = rows.map(row => `<tr>${columns.map(col => `<td>${row[col.key]}</td>`).join('')}</tr>`).join('');
+            const body = rows.map(row => `<tr>${columns.map(col => {
+                if (col.isBar) {
+                    const valStr = row[col.key];
+                    const valNum = Number(valStr.toString().replace(/,/g, '')) || 0;
+                    const percent = maxValues[col.key] > 0 ? (valNum / maxValues[col.key]) * 100 : 0;
+                    return `<td>
+                        <div style="position: relative; width: 100%; min-width: 80px; display: flex; align-items: center; justify-content: flex-end;">
+                            <div style="position: absolute; right: 0; top: 10%; bottom: 10%; height: 80%; width: ${percent}%; background-color: rgba(59, 130, 246, 0.15); border-radius: 4px; z-index: 0;"></div>
+                            <span style="position: relative; z-index: 1; padding: 4px;">${valStr}</span>
+                        </div>
+                    </td>`;
+                }
+                return `<td>${row[col.key]}</td>`;
+            }).join('')}</tr>`).join('');
             container.innerHTML = `<table class="ga4-simple-table">${header}<tbody>${body}</tbody></table>`;
+        };
+
+        const renderPieChart = (container, rows, valueKey, labelKey) => {
+            if (!container || !rows || rows.length === 0) return;
+            const total = rows.reduce((sum, r) => sum + (Number(r[valueKey].toString().replace(/,/g, '')) || 0), 0);
+            if (total === 0) return;
+
+            const colors = ['#3b82f6', '#10b981', '#f59e0b', '#ef4444', '#8b5cf6', '#ec4899'];
+            let currentAngle = 0;
+            const gradientStops = [];
+            const legendHtml = [];
+
+            rows.slice(0, 5).forEach((row, i) => { // Top 5 for chart
+                const val = Number(row[valueKey].toString().replace(/,/g, '')) || 0;
+                const percent = (val / total) * 100;
+                const degrees = (percent / 100) * 360;
+                gradientStops.push(`${colors[i]} ${currentAngle}deg ${currentAngle + degrees}deg`);
+                legendHtml.push(`
+                    <div style="display: flex; align-items: center; gap: 4px; font-size: 12px; margin-bottom: 4px;">
+                        <div style="width: 12px; height: 12px; background-color: ${colors[i]}; border-radius: 2px;"></div>
+                        <span>${row[labelKey]}: ${row[valueKey]} (${percent.toFixed(1)}%)</span>
+                    </div>
+                `);
+                currentAngle += degrees;
+            });
+            // Other logic for remaining rows if needed, but top 5 is fine.
+
+            const pieChartHtml = `
+                <div style="display: flex; gap: 20px; align-items: center; margin-top: 20px; padding-top: 20px; border-top: 1px solid #e5e7eb;">
+                    <div style="width: 120px; height: 120px; border-radius: 50%; background: conic-gradient(${gradientStops.join(', ')});"></div>
+                    <div>
+                        ${legendHtml.join('')}
+                    </div>
+                </div>
+            `;
+            container.insertAdjacentHTML('beforeend', pieChartHtml);
         };
 
         const setQuickRange = days => {
@@ -316,6 +379,17 @@
                 return;
             }
 
+            sessionStorage.setItem('ga4__reportData', JSON.stringify(data));
+            sessionStorage.setItem('ga4__accountId', accountSelect.value);
+            sessionStorage.setItem('ga4__propertyId', propertySelect.value);
+            sessionStorage.setItem('ga4__startDate', startDateInput.value);
+            sessionStorage.setItem('ga4__endDate', endDateInput.value);
+
+            renderReportData(data);
+            loadBtn.disabled = false;
+        };
+
+        const renderReportData = (data) => {
             const metricRow = data.metricsReport?.rows?.[0]?.metricValues || [];
             metrics.totalUsers.textContent = formatNumber(metricRow[0]?.value);
             metrics.newUsers.textContent = formatNumber(metricRow[1]?.value);
@@ -333,8 +407,8 @@
             }));
             renderListTable(tables.trend, trendRows, [
                 { key: 'date', label: '날짜' },
-                { key: 'users', label: '사용자' },
-                { key: 'sessions', label: '세션' }
+                { key: 'users', label: '사용자', isBar: true },
+                { key: 'sessions', label: '세션', isBar: true }
             ]);
 
             const deviceRows = (data.deviceReport?.rows || []).map(row => ({
@@ -343,8 +417,9 @@
             }));
             renderListTable(tables.device, deviceRows, [
                 { key: 'device', label: '디바이스' },
-                { key: 'users', label: '사용자' }
+                { key: 'users', label: '사용자', isBar: true }
             ]);
+            renderPieChart(tables.device, deviceRows, 'users', 'device');
 
             const channelRows = (data.channelReport?.rows || []).map(row => ({
                 channel: row.dimensionValues[0].value,
@@ -352,7 +427,7 @@
             }));
             renderListTable(tables.channel, channelRows, [
                 { key: 'channel', label: '채널' },
-                { key: 'sessions', label: '세션' }
+                { key: 'sessions', label: '세션', isBar: true }
             ]);
 
             const pageRows = (data.pageReport?.rows || []).map(row => ({
@@ -361,7 +436,7 @@
             }));
             renderListTable(tables.page, pageRows, [
                 { key: 'path', label: '페이지 경로' },
-                { key: 'views', label: '조회수' }
+                { key: 'views', label: '조회수', isBar: true }
             ]);
 
             const eventRows = (data.eventReport?.rows || []).map(row => ({
@@ -370,7 +445,7 @@
             }));
             renderListTable(tables.event, eventRows, [
                 { key: 'event', label: '이벤트' },
-                { key: 'count', label: '횟수' }
+                { key: 'count', label: '횟수', isBar: true }
             ]);
 
             const geoRows = (data.geoReport?.rows || []).map(row => ({
@@ -379,11 +454,12 @@
             }));
             renderListTable(tables.geo, geoRows, [
                 { key: 'country', label: '국가' },
-                { key: 'users', label: '사용자' }
+                { key: 'users', label: '사용자', isBar: true }
             ]);
 
             setStatus('리포트 로드 완료 ✅');
-            loadBtn.disabled = false;
+            showError('');
+            resetBtn.style.display = 'inline-block';
         };
 
         loginBtn.addEventListener('click', () => {
@@ -422,6 +498,11 @@
 
         logoutBtn.addEventListener('click', async () => {
             await fetch('/api/oauth/logout');
+            sessionStorage.removeItem('ga4__reportData');
+            sessionStorage.removeItem('ga4__accountId');
+            sessionStorage.removeItem('ga4__propertyId');
+            sessionStorage.removeItem('ga4__startDate');
+            sessionStorage.removeItem('ga4__endDate');
             window.location.reload();
         });
 
@@ -437,6 +518,26 @@
             loadReport().catch(err => showError(err.message));
         });
 
+        resetBtn.addEventListener('click', () => {
+            sessionStorage.removeItem('ga4__reportData');
+            sessionStorage.removeItem('ga4__accountId');
+            sessionStorage.removeItem('ga4__propertyId');
+            sessionStorage.removeItem('ga4__startDate');
+            sessionStorage.removeItem('ga4__endDate');
+
+            accountSelect.value = '';
+            propertySelect.innerHTML = '<option value="">먼저 계정을 선택하세요</option>';
+            initDate();
+            loadBtn.disabled = true;
+            resetBtn.style.display = 'none';
+
+            Object.values(metrics).forEach(el => el.textContent = '-');
+            Object.values(tables).forEach(el => el.textContent = '데이터 없음');
+
+            showError('');
+            setStatus('초기화 완료. 계정과 속성을 다시 선택해주세요.');
+        });
+
         quick7.addEventListener('click', () => setQuickRange(7));
         quick30.addEventListener('click', () => setQuickRange(30));
         quick90.addEventListener('click', () => setQuickRange(90));
@@ -448,15 +549,35 @@
             if (loggedIn) {
                 loginBtn.disabled = true;
                 loginBtn.textContent = '로그인 완료';
+                logoutBtn.style.display = 'inline-block';
                 accountSection.style.display = 'block';
                 try {
                     await loadAccounts();
+                    showError('');
+
+                    const savedReportData = sessionStorage.getItem('ga4__reportData');
+                    const savedAccountId = sessionStorage.getItem('ga4__accountId');
+                    const savedPropertyId = sessionStorage.getItem('ga4__propertyId');
+                    const savedStart = sessionStorage.getItem('ga4__startDate');
+                    const savedEnd = sessionStorage.getItem('ga4__endDate');
+
+                    if (savedReportData && savedAccountId) {
+                        accountSelect.value = savedAccountId;
+                        await loadProperties();
+                        if (savedPropertyId) propertySelect.value = savedPropertyId;
+                        if (savedStart) startDateInput.value = savedStart;
+                        if (savedEnd) endDateInput.value = savedEnd;
+
+                        loadBtn.disabled = !propertySelect.value;
+                        renderReportData(JSON.parse(savedReportData));
+                    }
                 } catch (err) {
                     showError(err.message);
                 }
             } else {
                 loginBtn.disabled = false;
                 loginBtn.textContent = 'Google로 로그인';
+                logoutBtn.style.display = 'none';
                 accountSection.style.display = 'none';
             }
         };
