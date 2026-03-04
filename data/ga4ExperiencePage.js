@@ -248,7 +248,7 @@
                 }
             });
 
-            const header = `<thead><tr>${columns.map(col => `<th>${col.label}</th>`).join('')}</tr></thead>`;
+            const header = `<thead><tr>${columns.map(col => `<th style="${col.align ? 'text-align:' + col.align : ''}">${col.label}</th>`).join('')}</tr></thead>`;
             const body = rows.map(row => `<tr>${columns.map(col => {
                 if (col.isBar) {
                     const valStr = row[col.key];
@@ -261,7 +261,7 @@
                         </div>
                     </td>`;
                 }
-                return `<td>${row[col.key]}</td>`;
+                return `<td style="${col.align ? 'text-align:' + col.align + ';' : ''}${col.bold ? 'font-weight:bold;' : ''}">${row[col.key]}</td>`;
             }).join('')}</tr>`).join('');
             container.innerHTML = `<table class="ga4-simple-table">${header}<tbody>${body}</tbody></table>`;
         };
@@ -486,6 +486,10 @@
 
         const renderReportData = (data) => {
             const metricRow = data.metricsReport?.rows?.[0]?.metricValues || [];
+            const ttUsers = Number(metricRow[0]?.value) || 1;
+            const ttSessions = Number(metricRow[2]?.value) || 1;
+            const ttPageViews = Number(metricRow[3]?.value) || 1;
+
             metrics.totalUsers.textContent = formatNumber(metricRow[0]?.value);
             metrics.newUsers.textContent = formatNumber(metricRow[1]?.value);
             metrics.sessions.textContent = formatNumber(metricRow[2]?.value);
@@ -502,50 +506,95 @@
             }));
             renderLineChart(tables.trend, trendRows);
 
-            const deviceRows = (data.deviceReport?.rows || []).map(row => ({
-                device: row.dimensionValues[0].value,
-                users: formatNumber(row.metricValues[0].value)
-            }));
+            const deviceRows = (data.deviceReport?.rows || []).map((row, i) => {
+                const val = Number(row.metricValues[0].value) || 0;
+                return {
+                    rank: i + 1,
+                    device: row.dimensionValues[0].value,
+                    users: formatNumber(val),
+                    ratio: ((val / ttUsers) * 100).toFixed(1) + '%'
+                };
+            }).slice(0, 10);
             renderListTable(tables.device, deviceRows, [
+                { key: 'rank', label: '순위', align: 'center', bold: true },
                 { key: 'device', label: '디바이스' },
-                { key: 'users', label: '사용자', isBar: true }
+                { key: 'users', label: '사용자 수', isBar: true },
+                { key: 'ratio', label: '비율', align: 'right' }
             ]);
             renderPieChart(tables.device, deviceRows, 'users', 'device');
 
-            const channelRows = (data.channelReport?.rows || []).map(row => ({
-                channel: row.dimensionValues[0].value,
-                sessions: formatNumber(row.metricValues[0].value)
-            }));
+            const channelRows = (data.channelReport?.rows || []).map((row, i) => {
+                const val = Number(row.metricValues[0].value) || 0;
+                return {
+                    rank: i + 1,
+                    channel: row.dimensionValues[0].value,
+                    sessions: formatNumber(val),
+                    ratio: ((val / ttSessions) * 100).toFixed(1) + '%'
+                };
+            }).slice(0, 10);
             renderListTable(tables.channel, channelRows, [
+                { key: 'rank', label: '순위', align: 'center', bold: true },
                 { key: 'channel', label: '채널' },
-                { key: 'sessions', label: '세션', isBar: true }
+                { key: 'sessions', label: '세션 수', isBar: true },
+                { key: 'ratio', label: '비율', align: 'right' }
             ]);
 
-            const pageRows = (data.pageReport?.rows || []).map(row => ({
-                path: row.dimensionValues[0].value,
-                views: formatNumber(row.metricValues[0].value)
-            }));
+            const pageRows = (data.pageReport?.rows || []).map((row, i) => {
+                const val = Number(row.metricValues[0].value) || 0;
+                return {
+                    rank: i + 1,
+                    path: row.dimensionValues[0].value,
+                    views: formatNumber(val),
+                    ratio: ((val / ttPageViews) * 100).toFixed(1) + '%'
+                };
+            }).slice(0, 10);
             renderListTable(tables.page, pageRows, [
+                { key: 'rank', label: '순위', align: 'center', bold: true },
                 { key: 'path', label: '페이지 경로' },
-                { key: 'views', label: '조회수', isBar: true }
+                { key: 'views', label: '페이지뷰', isBar: true },
+                { key: 'ratio', label: '비율', align: 'right' }
             ]);
 
-            const eventRows = (data.eventReport?.rows || []).map(row => ({
+            const getEventBadge = (eventName) => {
+                const defaultEvents = ['session_start', 'first_visit', 'page_view', 'user_engagement', 'scroll', 'click', 'file_download', 'video_start', 'video_progress', 'video_complete', 'view_search_results', 'form_start', 'form_submit'];
+                const ecommerceEvents = ['view_item', 'view_item_list', 'select_item', 'add_to_cart', 'remove_from_cart', 'view_cart', 'begin_checkout', 'add_shipping_info', 'add_payment_info', 'purchase', 'refund', 'generate_lead'];
+
+                if (defaultEvents.includes(eventName)) {
+                    return `<span style="padding: 3px 8px; border-radius: 12px; font-size: 12px; font-weight: 500; background-color: #e0f2fe; color: #0369a1;">기본 이벤트</span>`;
+                }
+                if (ecommerceEvents.includes(eventName)) {
+                    return `<span style="padding: 3px 8px; border-radius: 12px; font-size: 12px; font-weight: 500; background-color: #f3e8ff; color: #7e22ce;">전자상거래</span>`;
+                }
+                return `<span style="padding: 3px 8px; border-radius: 12px; font-size: 12px; font-weight: 500; background-color: #dcfce7; color: #15803d;">커스텀</span>`;
+            };
+
+            const eventRows = (data.eventReport?.rows || []).map((row, i) => ({
+                rank: i + 1,
                 event: row.dimensionValues[0].value,
-                count: formatNumber(row.metricValues[0].value)
-            }));
+                count: formatNumber(row.metricValues[0].value),
+                note: getEventBadge(row.dimensionValues[0].value)
+            })).slice(0, 10);
             renderListTable(tables.event, eventRows, [
-                { key: 'event', label: '이벤트' },
-                { key: 'count', label: '횟수', isBar: true }
+                { key: 'rank', label: '순위', align: 'center', bold: true },
+                { key: 'event', label: '이벤트명' },
+                { key: 'count', label: '발생횟수', isBar: true },
+                { key: 'note', label: '비고', align: 'center' }
             ]);
 
-            const geoRows = (data.geoReport?.rows || []).map(row => ({
-                country: row.dimensionValues[0].value,
-                users: formatNumber(row.metricValues[0].value)
-            }));
+            const geoRows = (data.geoReport?.rows || []).map((row, i) => {
+                const val = Number(row.metricValues[0].value) || 0;
+                return {
+                    rank: i + 1,
+                    country: row.dimensionValues[0].value,
+                    users: formatNumber(val),
+                    ratio: ((val / ttUsers) * 100).toFixed(1) + '%'
+                };
+            }).slice(0, 10);
             renderListTable(tables.geo, geoRows, [
+                { key: 'rank', label: '순위', align: 'center', bold: true },
                 { key: 'country', label: '국가' },
-                { key: 'users', label: '사용자', isBar: true }
+                { key: 'users', label: '사용자 수', isBar: true },
+                { key: 'ratio', label: '비율', align: 'right' }
             ]);
 
             setStatus('리포트 로드 완료 ✅');
