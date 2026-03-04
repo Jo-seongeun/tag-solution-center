@@ -1335,7 +1335,7 @@ window.dataLayer.push({
                         // 약간의 딜레이 후 팝업 닫기
                         setTimeout(() => {
                             window.close();
-                        }, 1000);
+                        }, 100);
                     </script>
                 </div>
             `
