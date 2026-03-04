@@ -40,7 +40,7 @@ module.exports = async function handler(req, res) {
         return;
     }
 
-    const { propertyId, startDate, endDate } = req.body || {};
+    const { propertyId, startDate, endDate, compareStartDate, compareEndDate } = req.body || {};
     if (!propertyId || !startDate || !endDate) {
         res.status(400).json({ error: 'missing_params' });
         return;
@@ -62,6 +62,23 @@ module.exports = async function handler(req, res) {
                 { name: 'averageSessionDuration' }
             ]
         });
+
+        let compareMetricsReport = null;
+        if (compareStartDate && compareEndDate) {
+            compareMetricsReport = await runReport(accessToken, propertyId, {
+                dateRanges: [{ startDate: compareStartDate, endDate: compareEndDate }],
+                metrics: [
+                    { name: 'totalUsers' },
+                    { name: 'newUsers' },
+                    { name: 'sessions' },
+                    { name: 'screenPageViews' },
+                    { name: 'engagementRate' },
+                    { name: 'bounceRate' },
+                    { name: 'screenPageViewsPerSession' },
+                    { name: 'averageSessionDuration' }
+                ]
+            });
+        }
 
         const trendReport = await runReport(accessToken, propertyId, {
             dateRanges,
@@ -118,6 +135,7 @@ module.exports = async function handler(req, res) {
 
         res.status(200).json({
             metricsReport,
+            compareMetricsReport,
             trendReport,
             deviceReport,
             browserReport,

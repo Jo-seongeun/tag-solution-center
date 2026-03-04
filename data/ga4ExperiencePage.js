@@ -93,41 +93,49 @@
                                 <h4>총 사용자</h4>
                                 <div class="ga4-metric-value" id="ga4TotalUsers">-</div>
                                 <div class="ga4-metric-meta">조회 기간 합계</div>
+                                <div class="ga4-metric-compare" id="ga4CompTotalUsers" style="margin-top: 4px; font-weight: 500; font-size: 13px;"></div>
                             </div>
                             <div class="ga4-metric-card">
                                 <h4>신규 사용자</h4>
                                 <div class="ga4-metric-value" id="ga4NewUsers">-</div>
                                 <div class="ga4-metric-meta">조회 기간 합계</div>
+                                <div class="ga4-metric-compare" id="ga4CompNewUsers" style="margin-top: 4px; font-weight: 500; font-size: 13px;"></div>
                             </div>
                             <div class="ga4-metric-card">
                                 <h4>세션수</h4>
                                 <div class="ga4-metric-value" id="ga4Sessions">-</div>
                                 <div class="ga4-metric-meta">조회 기간 합계</div>
+                                <div class="ga4-metric-compare" id="ga4CompSessions" style="margin-top: 4px; font-weight: 500; font-size: 13px;"></div>
                             </div>
                             <div class="ga4-metric-card">
                                 <h4>조회수</h4>
                                 <div class="ga4-metric-value" id="ga4PageViews">-</div>
                                 <div class="ga4-metric-meta">조회 기간 합계</div>
+                                <div class="ga4-metric-compare" id="ga4CompPageViews" style="margin-top: 4px; font-weight: 500; font-size: 13px;"></div>
                             </div>
                             <div class="ga4-metric-card">
                                 <h4>참여율</h4>
                                 <div class="ga4-metric-value" id="ga4EngagementRate">-</div>
                                 <div class="ga4-metric-meta">조회 기간 평균</div>
+                                <div class="ga4-metric-compare" id="ga4CompEngagementRate" style="margin-top: 4px; font-weight: 500; font-size: 13px;"></div>
                             </div>
                             <div class="ga4-metric-card">
                                 <h4>이탈률</h4>
                                 <div class="ga4-metric-value" id="ga4BounceRate">-</div>
                                 <div class="ga4-metric-meta">조회 기간 평균</div>
+                                <div class="ga4-metric-compare" id="ga4CompBounceRate" style="margin-top: 4px; font-weight: 500; font-size: 13px;"></div>
                             </div>
                             <div class="ga4-metric-card">
                                 <h4>세션당 페이지 뷰</h4>
                                 <div class="ga4-metric-value" id="ga4PagesPerSession">-</div>
                                 <div class="ga4-metric-meta">조회 기간 평균</div>
+                                <div class="ga4-metric-compare" id="ga4CompPagesPerSession" style="margin-top: 4px; font-weight: 500; font-size: 13px;"></div>
                             </div>
                             <div class="ga4-metric-card">
                                 <h4>평균 세션 시간</h4>
                                 <div class="ga4-metric-value" id="ga4AvgSessionDuration">-</div>
                                 <div class="ga4-metric-meta">조회 기간 평균</div>
+                                <div class="ga4-metric-compare" id="ga4CompAvgSessionDuration" style="margin-top: 4px; font-weight: 500; font-size: 13px;"></div>
                             </div>
                         </div>
 
@@ -165,6 +173,27 @@
                     <div class="ga4-table-card">
                         <h4>🌍 지역별 사용자 분포</h4>
                         <div class="ga4-table-placeholder" id="ga4GeoTable">데이터 없음</div>
+                    </div>
+
+                    <div class="ga4-analysis-section" id="ga4AnalysisSection" style="display: none; background: #fff; border: 1px solid #e5e7eb; border-radius: 12px; padding: 24px; margin-top: 24px;">
+                        <h4 style="margin: 0 0 20px 0; font-size: 1.1rem; display: flex; align-items: center; gap: 8px;">💡 종합 분석 및 권장사항</h4>
+                        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px;">
+                            <div style="background: #f8fafc; border-left: 4px solid #3b82f6; border-radius: 4px; padding: 20px;">
+                                <h5 style="margin: 0 0 16px 0; font-size: 1rem; display: flex; align-items: center; gap: 6px;">📈 강점</h5>
+                                <ul style="margin: 0; padding-left: 20px; color: #4b5563; font-size: 0.95rem; line-height: 1.7;" id="ga4AnalysisStrengths">
+                                </ul>
+                            </div>
+                            <div style="background: #f8fafc; border-left: 4px solid #f59e0b; border-radius: 4px; padding: 20px;">
+                                <h5 style="margin: 0 0 16px 0; font-size: 1rem; display: flex; align-items: center; gap: 6px;">⚠️ 개선 필요 영역</h5>
+                                <ul style="margin: 0; padding-left: 20px; color: #4b5563; font-size: 0.95rem; line-height: 1.7;" id="ga4AnalysisWeaknesses">
+                                </ul>
+                            </div>
+                            <div style="background: #f8fafc; border-left: 4px solid #10b981; border-radius: 4px; padding: 20px;">
+                                <h5 style="margin: 0 0 16px 0; font-size: 1rem; display: flex; align-items: center; gap: 6px;">💡 실행 권장사항</h5>
+                                <ul style="margin: 0; padding-left: 20px; color: #4b5563; font-size: 0.95rem; line-height: 1.7;" id="ga4AnalysisRecommendations">
+                                </ul>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -470,13 +499,33 @@
             if (!propertyId) return;
             loadBtn.disabled = true;
             setStatus('리포트 불러오는 중...');
+
+            const startStr = startDateInput.value;
+            const endStr = endDateInput.value;
+            const startD = new Date(startStr);
+            startD.setHours(0, 0, 0, 0);
+            const endD = new Date(endStr);
+            endD.setHours(0, 0, 0, 0);
+            const diffTime = Math.abs(endD - startD);
+            const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24)) + 1;
+
+            const compEnd = new Date(startD);
+            compEnd.setDate(compEnd.getDate() - 1);
+            const compStart = new Date(compEnd);
+            compStart.setDate(compStart.getDate() - diffDays + 1);
+
+            const compareStartDate = compStart.toISOString().slice(0, 10);
+            const compareEndDate = compEnd.toISOString().slice(0, 10);
+
             const res = await fetch('/api/ga4/report', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
                     propertyId,
-                    startDate: startDateInput.value,
-                    endDate: endDateInput.value
+                    startDate: startStr,
+                    endDate: endStr,
+                    compareStartDate,
+                    compareEndDate
                 })
             });
             const data = await res.json();
@@ -490,8 +539,10 @@
             sessionStorage.setItem('ga4__reportData', JSON.stringify(data));
             sessionStorage.setItem('ga4__accountId', accountSelect.value);
             sessionStorage.setItem('ga4__propertyId', propertySelect.value);
-            sessionStorage.setItem('ga4__startDate', startDateInput.value);
-            sessionStorage.setItem('ga4__endDate', endDateInput.value);
+            sessionStorage.setItem('ga4__startDate', startStr);
+            sessionStorage.setItem('ga4__endDate', endStr);
+            sessionStorage.setItem('ga4__compareStartDate', compareStartDate);
+            sessionStorage.setItem('ga4__compareEndDate', compareEndDate);
 
             const now = new Date();
             const timestamp = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}-${String(now.getDate()).padStart(2, '0')} ${String(now.getHours()).padStart(2, '0')}:${String(now.getMinutes()).padStart(2, '0')}:${String(now.getSeconds()).padStart(2, '0')}`;
@@ -503,6 +554,8 @@
 
         const renderReportData = (data, timestampOptions) => {
             const metricRow = data.metricsReport?.rows?.[0]?.metricValues || [];
+            const compRow = data.compareMetricsReport?.rows?.[0]?.metricValues || [];
+
             const ttUsers = Number(metricRow[0]?.value) || 1;
             const ttSessions = Number(metricRow[2]?.value) || 1;
             const ttPageViews = Number(metricRow[3]?.value) || 1;
@@ -515,6 +568,39 @@
             metrics.bounceRate.textContent = formatPercent(metricRow[5]?.value);
             metrics.pagesPerSession.textContent = formatDecimal(metricRow[6]?.value);
             metrics.avgSessionDuration.textContent = formatTime(metricRow[7]?.value);
+
+            const renderCompare = (elId, curVal, prevVal, invertGoodBad = false) => {
+                const el = document.getElementById(elId);
+                if (!el) return;
+                const cur = Number(curVal) || 0;
+                const prev = Number(prevVal) || 0;
+                if (prev === 0) {
+                    el.innerHTML = '<span style="color:#6b7280;">이전 데이터 없음</span>';
+                    return;
+                }
+                const pct = ((cur - prev) / prev) * 100;
+                const absPct = Math.abs(pct).toFixed(1);
+
+                let isGood = pct > 0;
+                if (invertGoodBad) isGood = pct < 0; // for Bounce Rate
+
+                if (pct > 0) {
+                    el.innerHTML = `<span style="color: ${isGood ? '#10b981' : '#ef4444'};">▲ ${absPct}%</span> 이전 동기간 대비`;
+                } else if (pct < 0) {
+                    el.innerHTML = `<span style="color: ${isGood ? '#10b981' : '#ef4444'};">▼ ${absPct}%</span> 이전 동기간 대비`;
+                } else {
+                    el.innerHTML = `<span style="color: #6b7280;">- 0.0%</span> 이전 동기간 대비`;
+                }
+            };
+
+            renderCompare('ga4CompTotalUsers', metricRow[0]?.value, compRow[0]?.value);
+            renderCompare('ga4CompNewUsers', metricRow[1]?.value, compRow[1]?.value);
+            renderCompare('ga4CompSessions', metricRow[2]?.value, compRow[2]?.value);
+            renderCompare('ga4CompPageViews', metricRow[3]?.value, compRow[3]?.value);
+            renderCompare('ga4CompEngagementRate', metricRow[4]?.value, compRow[4]?.value);
+            renderCompare('ga4CompBounceRate', metricRow[5]?.value, compRow[5]?.value, true); // invert
+            renderCompare('ga4CompPagesPerSession', metricRow[6]?.value, compRow[6]?.value);
+            renderCompare('ga4CompAvgSessionDuration', metricRow[7]?.value, compRow[7]?.value);
 
             const trendRows = (data.trendReport?.rows || []).map(row => ({
                 date: row.dimensionValues[0].value,
@@ -629,6 +715,51 @@
                 { key: 'users', label: '사용자 수', isBar: true },
                 { key: 'ratio', label: '비율', align: 'right' }
             ]);
+
+            // Analysis Section Logic
+            const strengths = [];
+            const weaknesses = [];
+            const recommendations = [];
+
+            const engRate = Number(metricRow[4]?.value) || 0;
+            const bounceRate = Number(metricRow[5]?.value) || 0;
+            const pagesSession = Number(metricRow[6]?.value) || 0;
+            const sessionDur = Number(metricRow[7]?.value) || 0;
+
+            if (engRate > 0.5) strengths.push(`높은 참여율 (${formatPercent(engRate)}) - 사용자들이 제공된 콘텐츠에 깊은 관심을 보이고 있습니다.`);
+            else weaknesses.push(`낮은 참여율 (${formatPercent(engRate)}) - 사용자들의 흥미를 끌 요소가 부족할 수 있습니다.`);
+
+            if (bounceRate < 0.4) strengths.push(`안정적인 이탈률 (${formatPercent(bounceRate)}) - 초기 진입 랜딩 페이지가 목적성에 부합합니다.`);
+            else weaknesses.push(`높은 이탈률 (${formatPercent(bounceRate)}) - 첫 페이지에서 이탈하는 비율이 높아 랜딩 페이지 최적화가 필요합니다.`);
+
+            if (sessionDur > 120) strengths.push(`충분한 체류 시간 (${formatTime(sessionDur)}) - 방문자들이 사이트 내에서 의미 있는 시간을 보내고 있습니다.`);
+            else weaknesses.push(`짧은 체류 시간 (${formatTime(sessionDur)}) - 사용자가 원하는 정보를 빠르게 찾지 못하거나 콘텐츠가 부족할 가능성이 있습니다.`);
+
+            if (data.pageReport?.rows && data.pageReport.rows.length > 0) {
+                const topPage = data.pageReport.rows[0].dimensionValues[0].value;
+                recommendations.push(`🔥 가장 인기 있는 페이지('${topPage}')로의 접근성을 메인 화면 등에서 한층 더 강화해 보세요.`);
+            }
+            if (bounceRate >= 0.4) {
+                recommendations.push(`⚠️ 유입률이 높은 랜딩 페이지들의 로딩 속도와 모바일 UI를 점검하여 즉각적인 이탈(바운스)을 방지하세요.`);
+            }
+            if (engRate < 0.5) {
+                recommendations.push(`📝 페이지 내 행동 유도 버튼(Call To Action)을 눈에 잘 띄게 배치하여 사용자의 다음 행동을 유도하세요.`);
+            }
+            if (recommendations.length < 2) { // fallback standard suggestion
+                recommendations.push(`💡 채널별 유입 분석을 통해 광고 예산을 재분배하고 효율이 좋은 채널에 집중 투자하는 것을 권장합니다.`);
+            }
+
+            const analysisEl = document.getElementById('ga4AnalysisSection');
+            const sEl = document.getElementById('ga4AnalysisStrengths');
+            const wEl = document.getElementById('ga4AnalysisWeaknesses');
+            const rEl = document.getElementById('ga4AnalysisRecommendations');
+
+            if (analysisEl) {
+                analysisEl.style.display = 'block';
+                sEl.innerHTML = strengths.length ? strengths.map(s => `<li>${s}</li>`).join('') : '<li style="color:#9ca3af; list-style:none;">현재 특별한 지표가 발견되지 않았습니다.</li>';
+                wEl.innerHTML = weaknesses.length ? weaknesses.map(w => `<li>${w}</li>`).join('') : '<li style="color:#9ca3af; list-style:none;">현재 데이터로는 우려되는 개선점이 보이지 않습니다.</li>';
+                rEl.innerHTML = recommendations.map(r => `<li>${r}</li>`).join('');
+            }
 
             setStatus('리포트 로드 완료 ✅');
             showError('');
