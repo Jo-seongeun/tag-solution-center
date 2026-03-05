@@ -280,6 +280,23 @@ const pageContents = {
                         <button type="button" class="secondary-button reset-button" data-role="results-reset">초기화</button>
                     </div>
                     <div id="trackerGrid" class="tracker-grid"></div>
+
+                    <div class="advanced-guide hidden" data-role="advanced-guide" style="margin-top: 30px; border-top: 1px dashed #e2e8f0; padding-top: 20px;">
+                        <h3>고급 진단 안내</h3>
+                        <p>GTM이 확인되었습니다.<br>GTM으로 삽입되는 태그는 페이지가 열릴 때 추가로 로딩되어,기본 진단에서 놓칠 수 있습니다.<br>더 정확한 확인을 위해 고급 진단을 권장합니다.</p>
+                        <div class="advanced-actions">
+                            <button class="secondary-button" data-role="open-extensions">확장 프로그램 설치</button>
+                            <a class="secondary-button" href="mailto:XX@XX.xxx">XX@XX.xxx 에 문의하기</a>
+                        </div>
+                    </div>
+
+                    <div class="ga4-guide hidden" data-role="ga4-guide" style="margin-top: 20px; padding: 20px; border-radius: 8px; border: 1px solid #4ade80; background-color: #f0fdf4;">
+                        <h3 style="color: #166534; margin-bottom: 8px; font-size: 16px;">📊 GA4 데이터 실시간 분석하기</h3>
+                        <p style="color: #15803d; font-size: 14px; margin-bottom: 15px; line-height: 1.5;">분석된 페이지에서 GA4 태그가 검출되었습니다! <br>GA4 실전 연동 체험관에서 실제 데이터를 대시보드 형태로 자세히 분석할 수 있습니다.</p>
+                        <div class="advanced-actions">
+                            <button class="primary-button" data-role="open-ga4-experience" style="background-color: #16a34a; border-color: #15803d; color: white;">GA4 실전 연동 체험관으로 이동</button>
+                        </div>
+                    </div>
                 </div>
 
                 <div id="emptyState" class="empty-state">
@@ -291,16 +308,6 @@ const pageContents = {
                         <div class="preview-grid" id="trackerPreviewGrid"></div>
                     </div>
                 </div>
-
-                <div class="advanced-guide hidden" data-role="advanced-guide">
-                    <h3>고급 진단 안내</h3>
-                    <p>GTM이 확인되었습니다.<br>GTM으로 삽입되는 태그는 페이지가 열릴 때 추가로 로딩되어,기본 진단에서 놓칠 수 있습니다.<br>더 정확한 확인을 위해 고급 진단을 권장합니다.</p>
-                    <div class="advanced-actions">
-                        <button class="secondary-button" data-role="open-extensions">확장 프로그램 설치</button>
-                        <a class="secondary-button" href="mailto:XX@XX.xxx">XX@XX.xxx 에 문의하기</a>
-                    </div>
-                </div>
-
             </div>
         `
     },

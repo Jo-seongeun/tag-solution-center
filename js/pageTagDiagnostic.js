@@ -185,13 +185,20 @@
 
         const gtmDetected = trackers.find(t => t.name === 'GTM')?.detected;
         if (gtmDetected) {
-            advancedGuide.classList.remove('hidden');
+            elements.advancedGuide?.classList.remove('hidden');
         } else {
-            advancedGuide.classList.add('hidden');
+            elements.advancedGuide?.classList.add('hidden');
         }
 
-        resultsSection.style.display = 'block';
-        emptyState.style.display = 'none';
+        const ga4Detected = trackers.find(t => t.name === 'GA4')?.detected;
+        if (ga4Detected) {
+            elements.ga4Guide?.classList.remove('hidden');
+        } else {
+            elements.ga4Guide?.classList.add('hidden');
+        }
+
+        elements.resultsSection.style.display = 'block';
+        elements.emptyState.style.display = 'none';
     }
 
     function saveResultsToSession(url, trackers) {
@@ -234,7 +241,8 @@
         elements.trackerGrid.innerHTML = '';
         elements.resultsSection.style.display = 'none';
         elements.emptyState.style.display = 'block';
-        elements.advancedGuide.classList.add('hidden');
+        elements.advancedGuide?.classList.add('hidden');
+        elements.ga4Guide?.classList.add('hidden');
     }
 
     function createTrackerPreview(previewGrid) {
@@ -269,7 +277,9 @@
         const emptyState = root.querySelector('#emptyState');
         const trackerPreviewGrid = root.querySelector('#trackerPreviewGrid');
         const advancedGuide = root.querySelector('[data-role="advanced-guide"]');
+        const ga4Guide = root.querySelector('[data-role="ga4-guide"]');
         const openExtensions = root.querySelector('[data-role="open-extensions"]');
+        const openGa4Experience = root.querySelector('[data-role="open-ga4-experience"]');
         const resetButton = root.querySelector('[data-role="results-reset"]');
 
         if (!urlInput || !analyzeBtn || !btnText || !progressWrap || !progressFill || !progressText || !errorMessage || !resultsSection || !urlInfo || !resultsHeader || !trackerGrid || !emptyState || !trackerPreviewGrid || !advancedGuide || !openExtensions || !resetButton) return;
@@ -280,12 +290,20 @@
             }
         });
 
+        if (openGa4Experience) {
+            openGa4Experience.addEventListener('click', () => {
+                if (window.navigationInstance && typeof window.navigationInstance.navigateToPage === 'function') {
+                    window.navigationInstance.navigateToPage('ga4-experience', 'quick-menu');
+                }
+            });
+        }
+
         resetButton.addEventListener('click', () => {
-            resetResults({ urlInfo, resultsHeader, trackerGrid, resultsSection, emptyState, advancedGuide }, urlInput, errorMessage);
+            resetResults({ urlInfo, resultsHeader, trackerGrid, resultsSection, emptyState, advancedGuide, ga4Guide }, urlInput, errorMessage);
         });
 
         createTrackerPreview(trackerPreviewGrid);
-        restoreResults({ urlInfo, resultsHeader, trackerGrid, resultsSection, emptyState, advancedGuide }, urlInput);
+        restoreResults({ urlInfo, resultsHeader, trackerGrid, resultsSection, emptyState, advancedGuide, ga4Guide }, urlInput);
 
         urlInput.addEventListener('keypress', e => {
             if (e.key === 'Enter') analyzeBtn.click();
@@ -321,7 +339,7 @@
             try {
                 const { html } = await fetchHtmlWithFallbacks(url);
                 const trackers = analyzeTrackerPatterns(html);
-                displayResults(url, trackers, { urlInfo, resultsHeader, trackerGrid, resultsSection, emptyState, advancedGuide });
+                displayResults(url, trackers, { urlInfo, resultsHeader, trackerGrid, resultsSection, emptyState, advancedGuide, ga4Guide });
                 saveResultsToSession(url, trackers);
             } catch (error) {
                 errorMessage.textContent = '페이지를 불러올 수 없습니다. URL 또는 보안 정책을 확인해주세요.';
