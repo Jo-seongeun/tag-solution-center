@@ -803,7 +803,7 @@
         });
 
         logoutBtn.addEventListener('click', async () => {
-            await fetch('/api/oauth/logout');
+            await fetch('/api/oauth/logout', { method: 'POST' });
             sessionStorage.removeItem('ga4__reportData');
             sessionStorage.removeItem('ga4__accountId');
             sessionStorage.removeItem('ga4__propertyId');

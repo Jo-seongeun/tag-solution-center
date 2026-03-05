@@ -20,17 +20,18 @@ function setCookie(res, name, value, options = {}) {
 }
 
 module.exports = function handler(req, res) {
-    const host = req.headers.host || '';
-    const domain = host.split(':')[0]; // Remove port if present (e.g., localhost:3000)
+    res.setHeader('Cache-Control', 'no-store, no-cache, must-revalidate, proxy-revalidate');
 
     setCookie(res, 'ga4_access_token', '', {
         httpOnly: true,
         secure: true,
         sameSite: 'None',
         path: '/',
-        domain: domain,
         maxAge: 0,
         expires: new Date(0)
     });
+    setCookie(res, 'ga4_oauth_state', '', { maxAge: 0, path: '/' });
+    setCookie(res, 'ga4_oauth_return', '', { maxAge: 0, path: '/' });
+
     res.status(200).json({ ok: true });
 }

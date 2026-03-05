@@ -11,6 +11,7 @@ function parseCookies(header) {
 }
 
 module.exports = async function handler(req, res) {
+    res.setHeader('Cache-Control', 'no-store, no-cache, must-revalidate, proxy-revalidate');
     const cookies = parseCookies(req.headers.cookie);
     const accessToken = cookies.ga4_access_token;
     if (!accessToken) {

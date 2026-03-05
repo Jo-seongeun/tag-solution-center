@@ -1331,10 +1331,6 @@ window.dataLayer.push({
                 <div class="page-content" style="text-align: center; padding: 50px;">
                     <h2>✅ 구글 계정 연동 성공</h2>
                     <p style="margin-top: 15px; color: #4b5563;">인증이 성공적으로 완료되었습니다. <br>이 창은 잠시 후 자동으로 닫힙니다.</p>
-                    <script>
-                        // 인증 완료 즉시 팝업 닫기
-                        window.close();
-                    </script>
                 </div>
             `
         }
@@ -1358,5 +1354,12 @@ window.dataLayer.push({
                 row.style.display = text.includes(keyword) ? '' : 'none';
             });
         });
+    };
+
+    window.pageInitHandlers['ga4-oauth-success'] = function () {
+        // 인증 후 바로 팝업 페이지 닫기
+        setTimeout(() => {
+            window.close();
+        }, 100);
     };
 })();
