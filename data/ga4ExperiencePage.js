@@ -809,6 +809,9 @@
             sessionStorage.removeItem('ga4__propertyId');
             sessionStorage.removeItem('ga4__startDate');
             sessionStorage.removeItem('ga4__endDate');
+            sessionStorage.removeItem('ga4__compareStartDate');
+            sessionStorage.removeItem('ga4__compareEndDate');
+            sessionStorage.removeItem('ga4__lastUpdate');
             window.location.reload();
         });
 

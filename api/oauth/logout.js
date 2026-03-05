@@ -21,7 +21,7 @@ module.exports = function handler(req, res) {
     setCookie(res, 'ga4_access_token', '', {
         httpOnly: true,
         secure: true,
-        sameSite: 'Lax',
+        sameSite: 'None',
         path: '/',
         maxAge: 0
     });
