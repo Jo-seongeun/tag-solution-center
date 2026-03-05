@@ -55,8 +55,8 @@ module.exports = async function handler(req, res) {
         const returnTo = cookies.ga4_oauth_return ? decodeURIComponent(cookies.ga4_oauth_return) : '/?page=ga4-experience&category=quick-menu';
 
         const cookieToken = `ga4_access_token=${tokenData.access_token}; HttpOnly; Secure; SameSite=None; Path=/; Max-Age=${maxAge}`;
-        const cookieStateClear = `ga4_oauth_state=; HttpOnly; Secure; SameSite=None; Path=/; Domain=${domain}; Max-Age=0`;
-        const cookieReturnClear = `ga4_oauth_return=; HttpOnly; Secure; SameSite=None; Path=/; Domain=${domain}; Max-Age=0`;
+        const cookieStateClear = `ga4_oauth_state=; HttpOnly; Secure; SameSite=None; Path=/; Max-Age=0`;
+        const cookieReturnClear = `ga4_oauth_return=; HttpOnly; Secure; SameSite=None; Path=/; Max-Age=0`;
 
         res.setHeader('Set-Cookie', [cookieToken, cookieStateClear, cookieReturnClear]);
 
