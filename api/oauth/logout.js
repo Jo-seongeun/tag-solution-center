@@ -4,6 +4,7 @@ function setCookie(res, name, value, options = {}) {
     if (options.secure) parts.push('Secure');
     if (options.sameSite) parts.push(`SameSite=${options.sameSite}`);
     if (options.path) parts.push(`Path=${options.path}`);
+    if (options.domain) parts.push(`Domain=${options.domain}`);
     if (typeof options.maxAge === 'number') parts.push(`Max-Age=${options.maxAge}`);
     if (options.expires) parts.push(`Expires=${options.expires.toUTCString()}`);
 
@@ -19,11 +20,15 @@ function setCookie(res, name, value, options = {}) {
 }
 
 module.exports = function handler(req, res) {
+    const host = req.headers.host || '';
+    const domain = host.split(':')[0]; // Remove port if present (e.g., localhost:3000)
+
     setCookie(res, 'ga4_access_token', '', {
         httpOnly: true,
         secure: true,
         sameSite: 'None',
         path: '/',
+        domain: domain,
         maxAge: 0,
         expires: new Date(0)
     });
