@@ -7,33 +7,44 @@
             content: `
                 <div class="page-content">
                     <h1>📊 GA4 기초 및 심화</h1>
-                    <p>GA4의 전체 구조와 실무 적용 흐름을 한 번에 정리합니다.</p>
+                    <p>GA4의 전체 구조와 기본 개념, 실무 적용 흐름을 한 번에 정리합니다.</p>
 
                     <div class="article-section">
-                        <h2>GA4 핵심 특징</h2>
+                        <h2>GA4란? (vs Universal Analytics)</h2>
                         <ul class="info-list">
-                            <li>이벤트 기반 데이터 모델</li>
-                            <li>사용자 중심 측정(크로스 디바이스)</li>
-                            <li>자동/향상된 측정 이벤트 제공</li>
-                            <li>탐색(Exploration) 기반의 심층 분석</li>
+                            <li><strong>이벤트 기반 데이터 모델:</strong> 기존 세션(Session) 기반에서 모든 상호작용을 이벤트(Event)로 추적하는 방식으로 변경</li>
+                            <li><strong>크로스 플랫폼:</strong> 웹과 앱의 데이터를 하나의 속성에서 통합하여 추적</li>
+                            <li><strong>사용자 중심:</strong> 세션이 아닌 사용자를 중심으로 User-ID, Google Signals 기반 향상된 추적 제공</li>
+                            <li><strong>머신러닝 인사이트:</strong> 자동으로 이상 수치를 감지하고 예측 지표 제공</li>
                         </ul>
                     </div>
 
                     <div class="article-section">
-                        <h2>실무 적용 체크리스트</h2>
+                        <h2>GA4 데이터 모델 핵심</h2>
                         <ul class="info-list">
-                            <li>측정 ID 및 설치 위치 확인</li>
-                            <li>핵심 전환 이벤트 정의</li>
-                            <li>데이터 레이어 구조 표준화</li>
-                            <li>Google Ads 연동 및 전환 공유</li>
+                            <li><strong>세션:</strong> 사용자의 연속된 활동 기간</li>
+                            <li><strong>사용자:</strong> 웹사이트를 방문하는 개인, 여러 기기를 거쳐도 User-ID로 연결 가능</li>
+                            <li><strong>이벤트 (Event):</strong> 페이지뷰, 클릭, 구매 등 사용자가 일으키는 모든 행동</li>
+                            <li><strong>매개변수 (Parameter):</strong> 해당 이벤트에 대한 상세 추가 정보 (예: 클릭된 버튼 이름, 상품 ID)</li>
                         </ul>
+                        <p class="section-description">GA4는 모든 데이터 수집을 '이벤트' 중심으로 처리하며, 자동/향상된 측정 이벤트를 기본 제공합니다.</p>
                     </div>
 
                     <div class="article-section">
-                        <h2>코드 예시 (GA4 기본 설치)</h2>
+                        <h2>실무 단계별 적용 흐름</h2>
+                        <ol class="info-list">
+                            <li><strong>옵션 설정:</strong> 측정 ID(G-XXXX) 발급 및 설치 위치 파악 (GTM 활용 권장)</li>
+                            <li><strong>데이터 레이어(DataLayer):</strong> 구조화된 데이터 전달 체계 표준화</li>
+                            <li><strong>이벤트 정의:</strong> 비즈니스 핵심 액션을 커스텀 전환 이벤트로 정의</li>
+                            <li><strong>연동:</strong> Google Ads 등 타 플랫폼과 연결하여 전환 데이터 공유</li>
+                        </ol>
+                    </div>
+
+                    <div class="article-section">
+                        <h2>코드 예시 (GA4 직접 설치)</h2>
                         <div class="code-block">
                             <button class="copy-button" onclick="copyCode('ga4-basic-install')">복사</button>
-                            <pre><code id="ga4-basic-install">&lt;!-- GA4 기본 설치 --&gt;
+                            <pre><code id="ga4-basic-install">&lt;!-- GA4 기본 설치 (GTM 사용 시 생략 가능) --&gt;
 &lt;script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"&gt;&lt;/script&gt;
 &lt;script&gt;
 window.dataLayer = window.dataLayer || [];
@@ -42,119 +53,19 @@ gtag('js', new Date());
 gtag('config', 'G-XXXXXXXXXX');
 &lt;/script&gt;</code></pre>
                         </div>
-                    </div>
-
-                    <div class="article-section">
-                        <h2>스크린샷 가이드</h2>
-                        <ol class="info-list">
-                            <li>GA4 관리 &gt; 데이터 스트림 화면</li>
-                            <li>측정 ID 복사 위치 확인</li>
-                            <li>디버그뷰에서 실시간 이벤트 확인</li>
-                        </ol>
+                        <p class="section-description">참고: Measurement Protocol API 등을 이용해 HTTP 요청 기반의 서버사이드 전송도 가능합니다.</p>
                     </div>
 
                     <div class="faq-section">
-                        <h3>FAQ</h3>
+                        <h3>자주 묻는 질문 (FAQ)</h3>
                         <div class="faq-item">
                             <h4>측정 ID가 여러 개일 때 어떻게 하나요?</h4>
-                            <p>서비스별 스트림을 분리한 경우입니다. 페이지별로 올바른 스트림 ID를 매핑하세요.</p>
+                            <p>웹, 앱, 혹은 서비스별로 분리한 데이터 스트림일 수 있습니다. 각 플랫폼에 맞는 스트림 ID를 올바르게 삽입하세요.</p>
                         </div>
                         <div class="faq-item">
-                            <h4>데이터가 늦게 보입니다</h4>
-                            <p>표준 리포트는 최대 24시간 지연될 수 있습니다. 디버그뷰로 먼저 확인하세요.</p>
+                            <h4>설치했는데 데이터 실시간 반영이 안 됩니다</h4>
+                            <p>메인 리포트는 통상 최대 24시간 정도 집계 지연이 발생할 수 있습니다. 즉각적인 이벤트 작동 여부는 [관리 -> DebugView] 메뉴를 통해 확인하세요.</p>
                         </div>
-                    </div>
-                </div>
-            `
-        },
-        'ga4-intro': {
-            title: 'GA4 Intro',
-            content: `
-                <div class="page-content">
-                    <h1>🧭 Intro</h1>
-                    <p>GA4는 Universal Analytics의 후속 버전으로, 이벤트 기반 측정과 머신러닝 인사이트를 제공하는 차세대 분석 플랫폼입니다.</p>
-
-                    <div class="article-section">
-                        <h2>주요 특징</h2>
-                        <ul class="info-list">
-                            <li>이벤트 기반 모델: 모든 상호작용을 이벤트로 추적</li>
-                            <li>머신러닝 인사이트: 자동 생성 인사이트 제공</li>
-                            <li>향상된 개인정보 보호: 쿠키 없는 측정 옵션</li>
-                            <li>크로스 플랫폼 추적: 웹+앱 통합</li>
-                            <li>사용자 중심 측정: 세션이 아닌 사용자 중심 수집</li>
-                        </ul>
-                    </div>
-
-                    <div class="article-section">
-                        <h2>GA4 시작하기</h2>
-                        <ol class="info-list">
-                            <li>계정 생성: Google 계정으로 GA4 시작</li>
-                            <li>속성 설정: 웹사이트 정보 입력</li>
-                            <li>태그 설치: 추적 코드 삽입</li>
-                            <li>데이터 수집: 실시간 분석 시작</li>
-                        </ol>
-                    </div>
-
-                    <div class="article-section">
-                        <h2>GA4 vs Universal Analytics</h2>
-                        <ul class="info-list">
-                            <li>데이터 모델: GA4(이벤트 기반) / UA(세션 기반)</li>
-                            <li>사용자 추적: GA4(사용자 중심) / UA(세션 중심)</li>
-                            <li>크로스 플랫폼: GA4(웹+앱) / UA(웹 전용)</li>
-                            <li>머신러닝: GA4(자동 인사이트) / UA(제한적)</li>
-                        </ul>
-                    </div>
-
-                </div>
-            `
-        },
-        'ga4-understanding': {
-            title: 'GA4 이해',
-            content: `
-                <div class="page-content">
-                    <h1>📘 GA4 이해</h1>
-                    <p>GA4는 이벤트 기반 데이터 모델을 사용해 모든 사용자 상호작용을 추적합니다.</p>
-
-                    <div class="article-section">
-                        <h2>GA4 데이터 모델</h2>
-                        <ul class="info-list">
-                            <li>세션: 사용자의 연속된 활동 기간</li>
-                            <li>사용자: 웹사이트를 방문하는 개인</li>
-                            <li>매개변수: 이벤트에 대한 추가 정보</li>
-                            <li>이벤트: 페이지뷰, 클릭, 구매 등 모든 행동</li>
-                        </ul>
-                        <p class="section-description">GA4에서는 모든 것이 이벤트이며, 매개변수로 상세 정보를 전달합니다.</p>
-                    </div>
-
-                    <div class="article-section">
-                        <h2>측정 프로토콜 (Measurement Protocol)</h2>
-                        <ul class="info-list">
-                            <li>배치 전송: 대량 데이터 효율적 전송</li>
-                            <li>오프라인 추적: 서버 로그, CRM 데이터 연동</li>
-                            <li>실시간 전송: 즉시 GA4 반영</li>
-                            <li>HTTP 요청: REST API 기반 전송</li>
-                        </ul>
-                        <p class="section-description">Reporting API로 외부 대시보드나 보고서를 구성할 수 있습니다.</p>
-                    </div>
-
-                    <div class="article-section">
-                        <h2>사용자 중심 측정</h2>
-                        <ul class="info-list">
-                            <li>User-ID: 로그인 사용자 활동 연결</li>
-                            <li>Google Signals: 크로스 디바이스 추적</li>
-                            <li>Enhanced Measurement: 자동 스크롤/클릭/동영상 이벤트</li>
-                        </ul>
-                    </div>
-
-                    <div class="article-section">
-                        <h2>데이터 수집 원리</h2>
-                        <ul class="info-list">
-                            <li>데이터 보존 기간 설정</li>
-                            <li>Consent Mode 기반 수집</li>
-                            <li>쿠키 없는 측정 옵션</li>
-                            <li>쿠키 기반 기본 식별</li>
-                        </ul>
-                        <p class="section-description">GA4는 실시간으로 데이터를 처리하고 머신러닝으로 품질을 보정합니다.</p>
                     </div>
                 </div>
             `
@@ -667,77 +578,21 @@ gtag('event', 'form_submit', {
             content: `
                 <div class="page-content">
                     <h1>🏷️ GTM 기초 및 심화</h1>
-                    <p>GTM의 구조, 배포 흐름, 운영 원칙을 한 번에 정리합니다.</p>
+                    <p>GTM의 기본 구조부터 태그/트리거/변수의 역할, 실무 배포 흐름까지 한 번에 정리합니다.</p>
 
                     <div class="article-section">
-                        <h2>GTM 핵심 구성</h2>
+                        <h2>GTM 필수 개념</h2>
                         <ul class="info-list">
-                            <li>태그(Tag): 데이터를 전송하는 스크립트</li>
-                            <li>트리거(Trigger): 태그 실행 조건</li>
-                            <li>변수(Variable): 동적으로 값을 전달</li>
-                            <li>컨테이너(Container): 전체 설정을 담는 단위</li>
-                        </ul>
-                    </div>
-
-                    <div class="article-section">
-                        <h2>컨테이너 유형</h2>
-                        <ul class="info-list">
-                            <li>웹</li>
-                            <li>서버</li>
-                            <li>앱(iOS/Android)</li>
-                            <li>AMP</li>
-                        </ul>
-                    </div>
-
-                    <div class="article-section">
-                        <h2>작업 흐름</h2>
-                        <ul class="info-list">
-                            <li>태그/트리거/변수 구성</li>
-                            <li>미리보기(Preview)로 검수</li>
-                            <li>버전 생성 및 게시</li>
-                            <li>변경 이력 기록</li>
-                        </ul>
-                    </div>
-
-                    <div class="article-section">
-                        <h2>운영 기본 원칙</h2>
-                        <ul class="info-list">
-                            <li>버전 관리 필수</li>
-                            <li>네이밍 규칙 통일</li>
-                            <li>배포 전 미리보기 검수</li>
-                            <li>불필요 태그 주기적 정리</li>
-                        </ul>
-                    </div>
-
-                    <div class="article-section">
-                        <h2>스크린샷 가이드</h2>
-                        <div class="screenshot-guide">
-                            <div class="screenshot-placeholder">작업 공간 &gt; 미리보기</div>
-                            <div class="screenshot-placeholder">버전 기록 화면</div>
-                        </div>
-                    </div>
-                </div>
-            `
-        },
-        'gtm-intro': {
-            title: 'GTM Intro',
-            content: `
-                <div class="page-content">
-                    <h1>🧭 Intro</h1>
-                    <p>태그/트리거/변수의 역할과 데이터 흐름을 이해합니다.</p>
-
-                    <div class="article-section">
-                        <h2>태그 동작 흐름</h2>
-                        <ul class="info-list">
-                            <li>사용자 행동 발생</li>
-                            <li>트리거 조건 충족</li>
-                            <li>태그 실행 및 데이터 전송</li>
+                            <li><strong>컨테이너(Container):</strong> 하나의 웹사이트/앱에 설치되는 전체 설정의 최상위 단위</li>
+                            <li><strong>태그(Tag):</strong> 타사 분석 도구(GA4, Meta 등)로 데이터를 전송하는 실행 코드</li>
+                            <li><strong>트리거(Trigger):</strong> 태그가 언제 실행되어야 하는지 결정하는 조건 (예: 특정 버튼 클릭 시)</li>
+                            <li><strong>변수(Variable):</strong> 태그나 트리거에 동적으로 값을 전달하는 저장소 (예: 클릭한 페이지 URL 반환)</li>
                         </ul>
                     </div>
 
                     <div class="article-section">
                         <h2>dataLayer 개요</h2>
-                        <p class="section-description">GTM은 dataLayer 값을 활용해 이벤트를 안정적으로 추적합니다.</p>
+                        <p class="section-description">GTM은 웹사이트 소스에서 전달하는 dataLayer 배열 값을 읽어와 이벤트를 매우 안정적으로 추적합니다.</p>
                         <div class="code-block">
                             <button class="copy-button" onclick="copyCode('gtm-datalayer-sample')">복사</button>
                             <pre><code id="gtm-datalayer-sample">&lt;script&gt;
@@ -745,28 +600,30 @@ window.dataLayer = window.dataLayer || [];
 window.dataLayer.push({
   event: 'cta_click',
   cta_name: 'signup_button'
-});
+}); // 이 이벤트를 GTM 맞춤 이벤트 트리거로 잡아 GA4로 넘깁니다.
 &lt;/script&gt;</code></pre>
                         </div>
                     </div>
 
                     <div class="article-section">
-                        <h2>스크린샷 가이드</h2>
-                        <div class="screenshot-guide">
-                            <div class="screenshot-placeholder">GTM 태그/트리거 화면</div>
-                            <div class="screenshot-placeholder">미리보기 디버그 패널</div>
-                        </div>
+                        <h2>작업 및 배포 흐름</h2>
+                        <ol class="info-list">
+                            <li><strong>설정:</strong> 태그/트리거/변수 로직 구성</li>
+                            <li><strong>검수 (Preview):</strong> 미리보기 디버그 모드를 통해 실제 웹사이트에서 동작 확인</li>
+                            <li><strong>버전 생성:</strong> 작업 이력을 남기기 위해 버전 게시 및 릴리즈 노트 작성</li>
+                            <li><strong>라이브 반영:</strong> 실제 환경에 수집 코드 배포</li>
+                        </ol>
                     </div>
 
                     <div class="faq-section">
-                        <h3>FAQ</h3>
+                        <h3>자주 묻는 질문 (FAQ)</h3>
                         <div class="faq-item">
-                            <h4>태그가 실행되지 않습니다</h4>
-                            <p>트리거 조건과 변수를 먼저 확인하고, Preview 모드에서 이벤트 수신 여부를 확인하세요.</p>
+                            <h4>태그가 실행되지(Fired) 않습니다. 왜 그런가요?</h4>
+                            <p>트리거의 발생 조건과 GTM 변수 값이 정확히 맞물려 있는지 미리보기(Preview) 패널을 통해 체크하세요.</p>
                         </div>
                         <div class="faq-item">
-                            <h4>dataLayer 값이 비어 있습니다</h4>
-                            <p>push 위치가 페이지 로드 이후인지, 스크립트 순서가 올바른지 확인하세요.</p>
+                            <h4>코드를 직접 넣는 것과 GTM의 차이는 뭔가요?</h4>
+                            <p>개발자 의존 없이 마케터/분석가가 즉각적으로 태그를 수정하고 배포할 수 있으며, 여러 스크립트를 한 곳에서 중앙 관리하므로 로딩 속도 측면에서도 유리합니다.</p>
                         </div>
                     </div>
                 </div>

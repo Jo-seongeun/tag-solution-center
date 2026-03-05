@@ -96,9 +96,7 @@ const ga4SidebarData = {
     subtitle: '사용자 분석과 비즈니스 인사이트 발견',
     sectionTitle: 'GA4',
     items: [
-        { id: 'ga4-setup', name: 'GA4 개요', icon: '📊', category: 'data-center' },
-        { id: 'ga4-intro', name: 'Intro', icon: '🧭', category: 'data-center' },
-        { id: 'ga4-understanding', name: 'GA4 이해', icon: '📘', category: 'data-center' },
+        { id: 'ga4-setup', name: 'GA4 기초 및 심화', icon: '📊', category: 'data-center' },
         { id: 'ga4-install', name: '가입 및 설치', icon: '📝', category: 'data-center' },
         { id: 'ga4-events', name: '이벤트 설정', icon: '⚡', category: 'data-center' },
         { id: 'ga4-integrations', name: '연동 메뉴얼', icon: '🔗', category: 'data-center' },
@@ -114,8 +112,7 @@ const gtmSidebarData = {
     subtitle: '태그를 효율적으로 관리',
     sectionTitle: 'GTM',
     items: [
-        { id: 'gtm-setup', name: 'GTM 개요', icon: '🏷️', category: 'data-center' },
-        { id: 'gtm-intro', name: 'Intro', icon: '🧭', category: 'data-center' },
+        { id: 'gtm-setup', name: 'GTM 기초 및 심화', icon: '🏷️', category: 'data-center' },
         { id: 'gtm-install', name: '가입 및 설치', icon: '📝', category: 'data-center' },
         { id: 'gtm-operations', name: '운영 방법', icon: '🛠️', category: 'data-center' }
     ]
@@ -183,8 +180,6 @@ const pageSidebarOverrides = {
 
     // 지식 센터 > GA4 기초 및 심화
     'ga4-setup': ga4SidebarData,
-    'ga4-intro': ga4SidebarData,
-    'ga4-understanding': ga4SidebarData,
     'ga4-install': ga4SidebarData,
     'ga4-events': ga4SidebarData,
     'ga4-integrations': ga4SidebarData,
@@ -195,7 +190,6 @@ const pageSidebarOverrides = {
 
     // 지식 센터 > GTM 기초 및 심화
     'gtm-setup': gtmSidebarData,
-    'gtm-intro': gtmSidebarData,
     'gtm-install': gtmSidebarData,
     'gtm-operations': gtmSidebarData,
 
