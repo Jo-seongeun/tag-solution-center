@@ -1332,10 +1332,8 @@ window.dataLayer.push({
                     <h2>✅ 구글 계정 연동 성공</h2>
                     <p style="margin-top: 15px; color: #4b5563;">인증이 성공적으로 완료되었습니다. <br>이 창은 잠시 후 자동으로 닫힙니다.</p>
                     <script>
-                        // 약간의 딜레이 후 팝업 닫기
-                        setTimeout(() => {
-                            window.close();
-                        }, 100);
+                        // 인증 완료 즉시 팝업 닫기
+                        window.close();
                     </script>
                 </div>
             `
