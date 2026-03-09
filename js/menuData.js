@@ -280,7 +280,7 @@ const pageContents = {
                         <p>GTM이 확인되었습니다.<br>GTM으로 삽입되는 태그는 페이지가 열릴 때 추가로 로딩되어,기본 진단에서 놓칠 수 있습니다.<br>더 정확한 확인을 위해 고급 진단을 권장합니다.</p>
                         <div class="advanced-actions">
                             <button class="secondary-button" data-role="open-extensions">확장 프로그램 설치</button>
-                            <a class="secondary-button" href="mailto:XX@XX.xxx">XX@XX.xxx 에 문의하기</a>
+                            <a class="secondary-button" href="mailto:adso@nasmedia.co.kr">나스미디어에 문의하기</a>
                         </div>
                     </div>
 

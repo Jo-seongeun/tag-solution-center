@@ -32,8 +32,10 @@
             </div>
 
             <div class="article-section">
-                <h2>🚀 GA4 Analytics Dashboard</h2>
-                <p>구글 애널리틱스 데이터를 실시간으로 확인하세요.</p>
+                <div style="background: linear-gradient(90deg, #3b82f6 0%, #10b981 33%, #eab308 66%, #f97316 100%); padding: 24px 32px; border-radius: 12px; margin-bottom: 24px; text-align: center; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);">
+                    <h2 style="margin: 0; font-size: 1.5rem; color: #111827; display: flex; align-items: center; justify-content: center; gap: 8px;">🚀 GA4 Analytics Dashboard</h2>
+                    <p style="margin: 8px 0 0; font-size: 0.95rem; color: #1f2937; font-weight: 500;">구글 애널리틱스 데이터를 실시간으로 확인하세요.</p>
+                </div>
 
                 <div class="ga4-status-indicator" id="ga4Status">API 로딩 중... ⏳</div>
 
@@ -87,7 +89,7 @@
                         <span style="color: #6b7280; font-size: 13px;" id="ga4LastUpdate">마지막 업데이트: -</span>
                     </div>
 
-                    <div class="ga4-dashboard-preview" id="ga4Dashboard">
+                    <div class="ga4-dashboard-preview" id="ga4Dashboard" style="display: none;">
                         <div class="ga4-metrics-grid">
                             <div class="ga4-metric-card">
                                 <h4>총 사용자</h4>
@@ -212,6 +214,7 @@
         const loginBtn = document.getElementById('ga4LoginBtn');
         const errorEl = document.getElementById('ga4ErrorMessage');
         const accountSection = document.getElementById('ga4AccountSection');
+        const dashboardEl = document.getElementById('ga4Dashboard');
         const accountSelect = document.getElementById('ga4AccountSelect');
         const propertySelect = document.getElementById('ga4PropertySelect');
         const loadBtn = document.getElementById('ga4LoadReportBtn');
@@ -862,6 +865,7 @@
                 loginBtn.textContent = '로그인 완료';
                 logoutBtn.style.display = 'inline-flex';
                 accountSection.style.display = 'block';
+                if (dashboardEl) dashboardEl.style.display = 'block';
                 try {
                     await loadAccounts();
                     showError('');
@@ -891,6 +895,7 @@
                 loginBtn.textContent = 'Google로 로그인';
                 logoutBtn.style.display = 'none';
                 accountSection.style.display = 'none';
+                if (dashboardEl) dashboardEl.style.display = 'none';
             }
         };
 
