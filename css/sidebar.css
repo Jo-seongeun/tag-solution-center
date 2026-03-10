@@ -637,24 +637,6 @@
     font-size: 0.9rem;
 }
 
-.tag-section ul.info-list li.capture-item,
-.article-section ul.info-list li.capture-item {
-    background-color: transparent;
-    border: none;
-    box-shadow: none;
-    padding: 0.2rem 0 0 2.2rem;
-    margin-top: -0.5rem;
-}
-
-.tag-section ul.info-list li.capture-item::before,
-.article-section ul.info-list li.capture-item::before {
-    content: '↳';
-    color: #94a3b8;
-    font-size: 1.2rem;
-    top: 0.1rem;
-    left: 1rem;
-}
-
 .tag-section ol.info-list,
 .article-section ol.info-list {
     padding-left: 0;
@@ -696,6 +678,30 @@
     justify-content: center;
     font-size: 0.75rem;
     font-weight: bold;
+}
+
+.tag-section .info-list li.capture-item,
+.article-section .info-list li.capture-item {
+    background-color: transparent;
+    border: none;
+    box-shadow: none;
+    padding: 0.2rem 0 0 2.2rem;
+    margin-top: -0.5rem;
+}
+
+.tag-section .info-list li.capture-item::before,
+.article-section .info-list li.capture-item::before {
+    counter-increment: none;
+    content: '↳';
+    color: #94a3b8;
+    background-color: transparent;
+    width: auto;
+    height: auto;
+    border-radius: 0;
+    font-size: 1.2rem;
+    font-weight: normal;
+    top: 0.1rem;
+    left: 1rem;
 }
 
 .code-block {

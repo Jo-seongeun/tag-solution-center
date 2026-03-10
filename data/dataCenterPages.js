@@ -385,17 +385,18 @@ gtag('event', 'form_submit', {
                         <h2>이벤트 디버깅</h2>
                         <ul class="info-list">
                             <li>GA4 실시간 보고서에서 이벤트/파라미터 확인</li>
+                            <li class="capture-item">
+                                <img src="image/GA4/2.event/GA4_1_event_check.jpg" alt="GA4 이벤트 확인" style="width: 100%; height: auto; border-radius: 8px; border: 1px solid #e2e8f0;">
+                            </li> 
                             <li>브라우저 개발자 도구에서 gtag 요청 확인</li>
+                            <li class="capture-item">
+                                <img src="image/GA4/2.event/GA4_2_event_check.jpg" alt="GA4 이벤트 확인" style="width: 100%; height: auto; border-radius: 8px; border: 1px solid #e2e8f0;">
+                            </li> 
                             <li>GTM 미리보기로 실시간 이벤트 검수</li>
+                            <li class="capture-item">
+                                <img src="image/GA4/2.event/GA4_3_GTM_preview.jpg" alt="GTM 미리보기 확인" style="width: 100%; height: auto; border-radius: 8px; border: 1px solid #e2e8f0;">
+                            </li> 
                         </ul>
-                    </div>
-
-                    <div class="article-section">
-                        <h2>스크린샷 가이드</h2>
-                        <div class="screenshot-guide">
-                            <div class="screenshot-placeholder">GA4 실시간 이벤트 화면</div>
-                            <div class="screenshot-placeholder">GTM 미리보기 화면</div>
-                        </div>
                     </div>
                 </div>
             `
@@ -410,11 +411,23 @@ gtag('event', 'form_submit', {
                     <div class="article-section">
                         <h2>Google Ads 연동</h2>
                         <ol class="info-list">
-                            <li>링크 생성 완료</li>
-                            <li>데이터 공유 설정 구성</li>
+                            <li>링크 플랫폼 선택</li>
+                            <li class="capture-item">
+                                <img src="image/GA4/3.link/GA4_1_link.jpg" alt="link 플랫폼 확인" style="width: 100%; height: auto; border-radius: 8px; border: 1px solid #e2e8f0;">
+                            </li> 
+                            <li>Google ads 선택</li>
+                            <li class="capture-item">
+                                <img src="image/GA4/3.link/GA4_2_googleads.jpg" alt="Google ads 선택" style="width: 100%; height: auto; border-radius: 8px; border: 1px solid #e2e8f0;">
+                            </li> 
                             <li>Google Ads 계정 선택</li>
+                            <li class="capture-item">
+                                <img src="image/GA4/3.link/GA4_3_select.jpg" alt="Google ads 계정 선택" style="width: 100%; height: auto; border-radius: 8px; border: 1px solid #e2e8f0;">
+                            </li> 
                             <li>“링크” 버튼 클릭</li>
                             <li>GA4 관리 → Google Ads 링크</li>
+                            <li class="capture-item">
+                                <img src="image/GA4/3.link/GA4_4_lickcheck.jpg" alt="연결 계정 확인" style="width: 100%; height: auto; border-radius: 8px; border: 1px solid #e2e8f0;">
+                            </li> 
                         </ol>
                         <p class="section-description">광고 클릭부터 구매까지의 여정을 추적하고 전환 최적화를 지원합니다.</p>
                     </div>
@@ -487,14 +500,6 @@ gtag('event', 'form_submit', {
                             <li>자동화된 보고서 생성</li>
                             <li>커스텀 대시보드 구축</li>
                         </ul>
-                    </div>
-
-                    <div class="article-section">
-                        <h2>스크린샷 가이드</h2>
-                        <div class="screenshot-guide">
-                            <div class="screenshot-placeholder">Google Ads 링크 설정</div>
-                            <div class="screenshot-placeholder">Search Console 링크 설정</div>
-                        </div>
                     </div>
                 </div>
             `
