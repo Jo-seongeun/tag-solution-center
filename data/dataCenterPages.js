@@ -80,9 +80,15 @@ gtag('config', 'G-XXXXXXXXXX');
                     <div class="article-section">
                         <h2>GA4 계정 생성</h2>
                         <ul class="info-list">
-                            <li>계정 이름 입력 및 데이터 공유 설정</li>
-                            <li>측정 시작 → Google 계정 로그인</li>
                             <li><a href="https://analytics.google.com/" target="_blank" rel="noopener">Google Analytics4</a> 접속</li>
+                            <li>측정 시작 → Google 계정 로그인</li>
+                            <li class="capture-item">
+                                <img src="image/GA4/1.start/GA4_1.start.jpg" alt="GA4 계정 생성" style="width: 100%; height: auto; border-radius: 8px; border: 1px solid #e2e8f0;">
+                            </li>
+                            <li>계정 이름 입력 및 데이터 공유 설정</li>
+                            <li class="capture-item">
+                                <img src="image/GA4/1.start/GA4_2.account.jpg" alt="GA4 계정 입력" style="width: 100%; height: auto; border-radius: 8px; border: 1px solid #e2e8f0;">
+                            </li>            
                         </ul>
                     </div>
 
@@ -91,6 +97,9 @@ gtag('config', 'G-XXXXXXXXXX');
                         <ul class="info-list">
                             <li>속성 이름 설정</li>
                             <li>시간대 및 통화 설정</li>
+                            <li class="capture-item">
+                                <img src="image/GA4/1.start/GA4_3_property.jpg" alt="GA4 속성 설정" style="width: 100%; height: auto; border-radius: 8px; border: 1px solid #e2e8f0;">
+                            </li>     
                         </ul>
                     </div>
 
@@ -99,7 +108,16 @@ gtag('config', 'G-XXXXXXXXXX');
                         <ul class="info-list">
                             <li>업종 선택</li>
                             <li>규모 선택</li>
+                            <li class="capture-item">
+                                <img src="image/GA4/1.start/GA4_4_business.jpg" alt="GA4 속성 세부" style="width: 100%; height: auto; border-radius: 8px; border: 1px solid #e2e8f0;">
+                            </li> 
                             <li>사용 목적 선택</li>
+                            <li class="capture-item">
+                                <img src="image/GA4/1.start/GA4_5_KPI.jpg" alt="GA4 속성 세부" style="width: 100%; height: auto; border-radius: 8px; border: 1px solid #e2e8f0;">
+                            </li> 
+                            <li class="capture-item">
+                                <img src="image/GA4/1.start/GA4_6_GDPR.jpg" alt="GA4 속성 세부" style="width: 100%; height: auto; border-radius: 8px; border: 1px solid #e2e8f0;">
+                            </li> 
                         </ul>
                     </div>
 
@@ -108,6 +126,9 @@ gtag('config', 'G-XXXXXXXXXX');
                         <ul class="info-list">
                             <li>웹 선택 → URL/스트림 이름 입력</li>
                             <li>향상된 측정 활성화</li>
+                            <li class="capture-item">
+                                <img src="image/GA4/1.start/GA4_7_stream.jpg" alt="데이터 스트림" style="width: 100%; height: auto; border-radius: 8px; border: 1px solid #e2e8f0;">
+                            </li> 
                         </ul>
                         <p class="section-description">자동 추적: 페이지뷰, 스크롤, 아웃바운드 클릭, 사이트 검색, 동영상, 파일 다운로드</p>
                     </div>
@@ -116,7 +137,13 @@ gtag('config', 'G-XXXXXXXXXX');
                         <h2>태그 설치</h2>
                         <ul class="info-list">
                             <li>Google Tag Manager (권장): 코드 수정 없이 관리, 디버깅/버전관리</li>
+                            <li class="capture-item">
+                                <img src="image/GA4/1.start/GA4_9_GTM.jpg" alt="GTM 태그 적용" style="width: 100%; height: auto; border-radius: 8px; border: 1px solid #e2e8f0;">
+                            </li>
                             <li>직접 설치 (gtag.js): 빠른 설치, 외부 의존성 없음</li>
+                            <li class="capture-item">
+                                <img src="image/GA4/1.start/GA4_8_tag.jpg" alt="직접 설치용 태그 확인" style="width: 100%; height: auto; border-radius: 8px; border: 1px solid #e2e8f0;">
+                            </li>
                             <li>플러그인(CMS): WordPress는 Site Kit, MonsterInsights 등</li>
                         </ul>
                     </div>
@@ -125,18 +152,17 @@ gtag('config', 'G-XXXXXXXXXX');
                         <h2>설치 확인</h2>
                         <ul class="info-list">
                             <li>실시간 보고서: 실시간 메뉴에서 방문 데이터 확인</li>
-                            <li>개발자 도구: Console 오류/Network 요청 확인</li>
+                            <li class="capture-item">
+                                <img src="image/GA4/1.start/GA4_10_now.jpg" alt="실시간 리포트" style="width: 100%; height: auto; border-radius: 8px; border: 1px solid #e2e8f0;">
+                            </li>
+                            <li>개발자 도구: 확장 프로그램으로 확인</li>
+                            <li class="capture-item">
+                                <img src="image/GA4/1.start/GA4_11_debugger.jpg" alt="확장 프로그램 확인" style="width: 100%; height: auto; border-radius: 8px; border: 1px solid #e2e8f0;">
+                            </li>
                         </ul>
                         <p class="section-description">실시간 반영까지 지연될 수 있으므로 개발/운영 환경을 구분하세요.</p>
                     </div>
 
-                    <div class="article-section">
-                        <h2>스크린샷 가이드</h2>
-                        <div class="screenshot-guide">
-                            <div class="screenshot-placeholder">GA4 데이터 스트림 화면</div>
-                            <div class="screenshot-placeholder">실시간 보고서 확인</div>
-                        </div>
-                    </div>
                 </div>
             `
         },
@@ -155,6 +181,150 @@ gtag('config', 'G-XXXXXXXXXX');
                             <li>향상된 측정 이벤트: 설정으로 활성화</li>
                             <li>자동 수집 이벤트: GA4가 자동 추적</li>
                         </ul>
+
+                        <h3 style="margin-top: 30px; margin-bottom: 15px;">📌 권장 이벤트 예시</h3>
+                        <div class="qa-table-wrap">
+                            <table class="qa-table">
+                                <thead>
+                                    <tr>
+                                        <th>Google이 권장하는 이벤트</th>
+                                        <th>사용 예시</th>
+                                        <th>설명</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><strong>login</strong></td>
+                                        <td>로그인 버튼 클릭 / 로그인 완료 페이지</td>
+                                        <td>사용자가 웹사이트/앱에 로그인했을 때 추적</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>search</strong></td>
+                                        <td>사이트 내 검색창 이용</td>
+                                        <td>방문자가 특정 상품이나 콘텐츠를 검색할 때 추적 (search_term 파라미터 포함 권장)</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>generate_lead</strong></td>
+                                        <td>상담 신청 폼 제출 / 뉴스레터 구독 완료</td>
+                                        <td>마케팅 목적의 리드(잠재고객) 확보가 발생할 때 추적</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>share</strong></td>
+                                        <td>게시물 공유 버튼(카카오톡, 페이스북) 클릭</td>
+                                        <td>사용자가 특정 문서를 타인과 공유했을 때의 상호작용 추적</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <h3 style="margin-top: 30px; margin-bottom: 15px;">📌 커스텀 이벤트 예시 (업종별)</h3>
+                        <div class="qa-table-wrap">
+                            <table class="qa-table">
+                                <thead>
+                                    <tr>
+                                        <th>업종 별 주로 사용되는 예시 이벤트</th>
+                                        <th>사용 예시</th>
+                                        <th>설명</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><strong>[B2B]</strong> <code>download_brochure</code></td>
+                                        <td>회사 소개서 PDF 다운로드 클릭</td>
+                                        <td>견적서, 서비스 소개서 등 영업 핵심 자료의 다운로드 횟수 파악</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>[이커머스]</strong> <code>review_write</code></td>
+                                        <td>구매 후기(리뷰) 작성 완료</td>
+                                        <td>고객들의 리뷰 작성이 향후 재구매 및 타겟팅에 미치는 영향 분석 시 활용</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>[미디어/콘텐츠]</strong> <code>click_banner</code></td>
+                                        <td>메인 페이지나 우측 사이드바의 특정 배너 클릭</td>
+                                        <td>자체 제작한 내부 프로모션 배너의 클릭 성과(CTR) 파악 및 A/B 테스트</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>[교육/인강]</strong> <code>video_complete_100</code></td>
+                                        <td>강의 샘플 VOD 영상을 끝까지 시청 완료</td>
+                                        <td>수강생의 완강 비율과 콘텐츠 참여도를 100% 기준으로 정확하게 추적</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <div class="notice-box notice-point" style="margin-top: 30px; margin-bottom: 20px;">
+                            <p class="notice-text">💡 <strong>향상된 측정 이벤트와 자동 수집 이벤트</strong>는 개별적인 태그 설치 작업 없이, 설정 활성화 여부나 기본 스크립트에 의해 GA4에서 자동으로 수집됩니다. 따로 작업하지는 않으나, 데이터에서 확인 가능한 이벤트 명을 참고용으로 함께 제공합니다.</p>
+                        </div>
+
+                        <h3 style="margin-top: 20px; margin-bottom: 15px;">📌 향상된 측정 이벤트 (기본 제공)</h3>
+                        <div class="qa-table-wrap">
+                            <table class="qa-table">
+                                <thead>
+                                    <tr>
+                                        <th>이벤트 명</th>
+                                        <th>수집 조건</th>
+                                        <th>주요 수집 내용(파라미터)</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><strong>page_view</strong></td>
+                                        <td>페이지가 처음 로드되거나 SPA에서 화면 전환 발생 시</td>
+                                        <td>page_location, page_referrer, page_title</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>scroll</strong></td>
+                                        <td>사용자가 페이지의 90% 이상을 스크롤했을 때</td>
+                                        <td>percent_scrolled (기본 90)</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>click</strong></td>
+                                        <td>현재 도메인을 벗어나는 외부 링크(아웃바운드) 클릭 시</td>
+                                        <td>link_classes, link_domain, link_url</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>view_search_results</strong></td>
+                                        <td>기본 제공되는 URL 쿼리(예: q, s, search 등)를 통해 검색할 때</td>
+                                        <td>search_term (검색어)</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>file_download</strong></td>
+                                        <td>pdf, excel, zip 등의 문서나 파일 링크를 다운로드 클릭 시</td>
+                                        <td>file_extension, file_name, link_text</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <h3 style="margin-top: 30px; margin-bottom: 15px;">📌 자동 수집 이벤트</h3>
+                        <div class="qa-table-wrap">
+                            <table class="qa-table">
+                                <thead>
+                                    <tr>
+                                        <th>이벤트 명</th>
+                                        <th>수집 조건</th>
+                                        <th>설명</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><strong>session_start</strong></td>
+                                        <td>사용자가 앱/웹과 상호작용하여 새 세션이 시작될 때</td>
+                                        <td>일반적으로 30분 동안 활동이 없으면 새 세션 아이디가 부여됨</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>user_engagement</strong></td>
+                                        <td>페이지/화면이 10초 이상 포커스 되거나 스크롤/클릭을 수행했을 때</td>
+                                        <td>참여 세션(Engaged Sessions)과 평균 참여 시간을 계산하기 위한 핵심 지표</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>first_visit</strong></td>
+                                        <td>사용자가 앱을 처음 열거나, 처음으로 웹사이트를 방문했을 때</td>
+                                        <td>신규 사용자를 구분하며, 이 데이터로 신규 사용자 획득 보고서를 구성</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
 
                     <div class="article-section">
