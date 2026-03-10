@@ -57,7 +57,7 @@ gtag('config', 'G-XXXXXXXXXX');
                     </div>
 
                     <div class="faq-section">
-                        <h3>자주 묻는 질문 (FAQ)</h3>
+                        <h3 style="color: white;">자주 묻는 질문 (FAQ)</h3>
                         <div class="faq-item">
                             <h4>측정 ID가 여러 개일 때 어떻게 하나요?</h4>
                             <p>웹, 앱, 혹은 서비스별로 분리한 데이터 스트림일 수 있습니다. 각 플랫폼에 맞는 스트림 ID를 올바르게 삽입하세요.</p>
@@ -616,7 +616,7 @@ window.dataLayer.push({
                     </div>
 
                     <div class="faq-section">
-                        <h3>자주 묻는 질문 (FAQ)</h3>
+                        <h3 style="color: white;">자주 묻는 질문 (FAQ)</h3>
                         <div class="faq-item">
                             <h4>태그가 실행되지(Fired) 않습니다. 왜 그런가요?</h4>
                             <p>트리거의 발생 조건과 GTM 변수 값이 정확히 맞물려 있는지 미리보기(Preview) 패널을 통해 체크하세요.</p>
@@ -730,7 +730,7 @@ height=\"0\" width=\"0\" style=\"display:none;visibility:hidden\"&gt;&lt;/iframe
                     </div>
 
                     <div class="faq-section">
-                        <h3>FAQ</h3>
+                        <h3 style="color: white;">FAQ</h3>
                         <div class="faq-item">
                             <h4>버전 관리는 왜 중요하나요?</h4>
                             <p>변경 이력을 남기고 문제 발생 시 즉시 롤백하기 위함입니다.</p>
@@ -884,7 +884,7 @@ window.dataLayer.push({
                     </div>
                     
                     <div class="faq-section">
-                        <h3>자주 묻는 질문</h3>
+                        <h3 style="color: white;">자주 묻는 질문</h3>
                         <div class="faq-item">
                             <h4>태그가 로딩되지 않을 때</h4>
                             <p>GTM/스크립트 삽입 위치와 차단 확장 프로그램을 확인하세요.</p>
@@ -1016,7 +1016,7 @@ window.dataLayer.push({
                     </div>
 
                     <div class="faq-section">
-                        <h3>FAQ</h3>
+                        <h3 style="color: white;">FAQ</h3>
                         <div class="faq-item">
                             <h4>QA 시 우선 순위는 무엇인가요?</h4>
                             <p>전환 이벤트와 핵심 매출 지표부터 점검하세요.</p>

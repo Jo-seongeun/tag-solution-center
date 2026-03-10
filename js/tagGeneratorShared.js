@@ -130,10 +130,10 @@
                 <div class="ecommerce-output-title">📌 안내사항</div>
                 <p>
                     발급된 이벤트는 기본 전자상거래 이벤트로 설정되어 있습니다.<br>
-                    상품 ID, 카테고리, 가격 등 상세 데이터 수집이 필요한 경우 데이터 분석팀에 문의해 주세요.
+                    상품 ID, 카테고리, 가격 등 상세 데이터 수집이 필요한 경우 나스미디어에 문의해 주세요.
                 </p>
                 <div class="ecommerce-output-actions">
-                    <a class="secondary-button" href="mailto:XX@XX.xxx">문의 하러 가기</a>
+                    <a class="secondary-button" href="mailto:adso@nasmedia.co.kr">나스미디어에 문의하기</a>
                 </div>
             </div>
         `;

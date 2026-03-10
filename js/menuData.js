@@ -401,7 +401,7 @@ const pageContents = {
                 </div>
                 
                 <div class="faq-section">
-                    <h3>자주 묻는 질문</h3>
+                    <h3 style="color: white;">자주 묻는 질문</h3>
                     <div class="faq-item">
                         <h4>태그가 로딩되지 않을 때</h4>
                         <p>GTM/스크립트 삽입 위치와 차단 확장 프로그램을 확인하세요.</p>
