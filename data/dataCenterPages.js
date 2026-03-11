@@ -426,7 +426,7 @@ gtag('event', 'form_submit', {
                             <li>“링크” 버튼 클릭</li>
                             <li>GA4 관리 → Google Ads 링크</li>
                             <li class="capture-item">
-                                <img src="image/GA4/3.link/GA4_4_lickcheck.jpg" alt="연결 계정 확인" style="width: 100%; height: auto; border-radius: 8px; border: 1px solid #e2e8f0;">
+                                <img src="image/GA4/3.link/GA4_4_linkcheck.jpg" alt="연결 계정 확인" style="width: 100%; height: auto; border-radius: 8px; border: 1px solid #e2e8f0;">
                             </li> 
                         </ol>
                         <p class="section-description">광고 클릭부터 구매까지의 여정을 추적하고 전환 최적화를 지원합니다.</p>
@@ -435,11 +435,20 @@ gtag('event', 'form_submit', {
                     <div class="article-section">
                         <h2>Google Search Console 연동</h2>
                         <ol class="info-list">
-                            <li>연동 완료</li>
-                            <li>데이터 스트림 연결</li>
-                            <li>Search Console 속성 선택</li>
-                            <li>“링크” 버튼 클릭</li>
                             <li>GA4 관리 → Search Console 링크</li>
+                            <li class="capture-item">
+                                <img src="image/GA4/3.link/GA4_5_link.jpg" alt="Search Console 링크" style="width: 100%; height: auto; border-radius: 8px; border: 1px solid #e2e8f0;">
+                            </li>
+                            <li>“링크” 버튼 클릭</li>
+                            <li>Search Console 속성 선택</li>
+                            <li class="capture-item">
+                                <img src="image/GA4/3.link/GA4_6_search_consol.jpg" alt="Search Console 속성 선택" style="width: 100%; height: auto; border-radius: 8px; border: 1px solid #e2e8f0;">
+                            </li>
+                            <li>데이터 스트림 연결</li>
+                            <li>연동 완료</li>
+                            <li class="capture-item">
+                                <img src="image/GA4/3.link/GA4_8_linkcheck.jpg" alt="연동 완료" style="width: 100%; height: auto; border-radius: 8px; border: 1px solid #e2e8f0;">
+                            </li>
                         </ol>
                         <ul class="info-list">
                             <li>평균 순위</li>
@@ -514,11 +523,11 @@ gtag('event', 'form_submit', {
                     <div class="article-section">
                         <h2>주요 추적 단계</h2>
                         <ul class="info-list">
-                            <li>구매 완료</li>
-                            <li>결제 시작</li>
-                            <li>장바구니 조회</li>
-                            <li>장바구니 추가</li>
                             <li>상품 조회</li>
+                            <li>장바구니 추가</li>
+                            <li>장바구니 조회</li>
+                            <li>결제 시작</li>
+                            <li>구매 완료</li>
                         </ul>
                         <p class="section-description">매출, 전환율, 상품별 성과를 상세 분석할 수 있습니다.</p>
                     </div>
@@ -570,10 +579,10 @@ gtag('event', 'form_submit', {
                     <div class="article-section">
                         <h2>결제 프로세스 추적</h2>
                         <ol class="info-list">
-                            <li>purchase: 구매 완료</li>
+                            <li>begin_checkout: 결제 시작</li>
                             <li>add_shipping_info: 배송 정보 입력</li>
                             <li>add_payment_info: 결제 정보 입력</li>
-                            <li>begin_checkout: 결제 시작</li>
+                            <li>purchase: 구매 완료</li>
                         </ol>
                         <div class="code-block">
                             <button class="copy-button" onclick="copyCode('ga4-begin-checkout')">복사</button>
@@ -619,9 +628,21 @@ gtag('event', 'form_submit', {
                         <h2>전자상거래 보고서</h2>
                         <ul class="info-list">
                             <li>장바구니 분석</li>
+                            <li class="capture-item">
+                                <img src="image/GA4/4.ecommerce/GA4_1_cart_path.jpg" alt="장바구니 분석" style="width: 100%; height: auto; border-radius: 8px; border: 1px solid #e2e8f0;">
+                            </li>
                             <li>구매 여정 분석</li>
+                            <li class="capture-item">
+                                <img src="image/GA4/4.ecommerce/GA4_2_buy_path.jpg" alt="구매 여정 분석" style="width: 100%; height: auto; border-radius: 8px; border: 1px solid #e2e8f0;">
+                            </li>
                             <li>상품 성과 분석</li>
+                            <li class="capture-item">
+                                <img src="image/GA4/4.ecommerce/GA4_3_product_buy.jpg" alt="상품 성과 분석" style="width: 100%; height: auto; border-radius: 8px; border: 1px solid #e2e8f0;">
+                            </li>
                             <li>수익 보고서</li>
+                            <li class="capture-item">
+                                <img src="image/GA4/4.ecommerce/GA4_4_value_report.jpg" alt="수익 보고서" style="width: 100%; height: auto; border-radius: 8px; border: 1px solid #e2e8f0;">
+                            </li>
                         </ul>
                         <p class="section-description">상품 추천, 가격 최적화, 마케팅 전략 수립에 활용합니다.</p>
                     </div>
