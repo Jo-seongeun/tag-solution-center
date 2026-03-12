@@ -670,31 +670,53 @@ gtag('event', 'form_submit', {
                     <div class="article-section">
                         <h2>전환 설정 방법</h2>
                         <ol class="info-list">
-                            <li>이벤트 이름/조건 설정</li>
-                            <li>“이벤트 만들기” 클릭</li>
                             <li>GA4 관리 → 이벤트 메뉴</li>
-                            <li>생성 이벤트 전환 토글 활성화</li>
+                            <li class="capture-item">
+                                <img src="image/GA4/5.conversion/GA4_1_event.jpg" alt="GA4 이벤트 메뉴" style="width: 100%; height: auto; border-radius: 8px; border: 1px solid #e2e8f0;">
+                            </li>
+                            <li>“이벤트 만들기” 클릭</li>
+                            <li class="capture-item">
+                                <img src="image/GA4/5.conversion/GA4_2_event_make.jpg" alt="이벤트 만들기" style="width: 100%; height: auto; border-radius: 8px; border: 1px solid #e2e8f0;">
+                            </li>
+                            <li>이벤트 이름/조건 설정</li>
+                            <li class="capture-item">
+                                <img src="image/GA4/5.conversion/GA4_3_event_case1.jpg" alt="이벤트 이름 조건 설정 1" style="width: 100%; height: auto; border-radius: 8px; border: 1px solid #e2e8f0;">
+                            </li>
+                            <li class="capture-item">
+                                <img src="image/GA4/5.conversion/GA4_4_event_case2.jpg" alt="이벤트 이름 조건 설정 2" style="width: 100%; height: auto; border-radius: 8px; border: 1px solid #e2e8f0;">
+                            </li>
+                            <li>생성 이벤트 전환 활성화</li>
+                            <li class="capture-item">
+                                <img src="image/GA4/5.conversion/GA4_5_conversion_event.jpg" alt="생성 이벤트 전환 활성화" style="width: 100%; height: auto; border-radius: 8px; border: 1px solid #e2e8f0;">
+                            </li>
                         </ol>
                         <p class="section-description">핵심 이벤트만 전환으로 설정해 중요도가 희석되지 않도록 하세요.</p>
+                        <p class="section-description" style="margin-top: 10px; color: #475569;">💡 GA4 플랫폼 상에서 이벤트 생성이 가능하긴 하나, GTM을 통해 맞춤 이벤트로 생성 및 관리해주는 것이 장기적인 유지보수 측면에서 더욱 유용합니다.</p>
                     </div>
 
                     <div class="article-section">
                         <h2>전환 보고서 주요 지표</h2>
                         <ul class="info-list">
-                            <li>전환 경로</li>
-                            <li>전환 가치</li>
-                            <li>전환율</li>
-                            <li>전환 수</li>
+                            <li><strong>전환 수:</strong> 설정한 전환 이벤트가 발생한 총 횟수로 전체적인 성과 규모를 파악합니다.</li>
+                            <li><strong>전환 가치:</strong> 구매나 예약 등 각 전환 이벤트에 부여된 금전적 가치의 총합입니다.</li>
+                            <li><strong>전환율:</strong> 전체 사용자 또는 세션 대비 전환한 비율로, 마케팅 효율성을 보여줍니다.</li>
+                            <li><strong>전환 경로:</strong> 사용자가 전환에 이르기까지 거친 유입 채널(터치포인트)의 순서를 분석합니다.</li>
+                            <li><strong>참여율:</strong> 사이트와 의미 있는 상호작용(10초 이상 체류 등)을 한 참여 세션의 비율입니다.</li>
+                            <li><strong>이탈률:</strong> 상호작용 없이 방문 후 바로 떠난 세션의 비율로, 참여율에 반비례합니다.</li>
                         </ul>
                         <p class="section-description">전환 보고서로 캠페인 효과와 개선 포인트를 분석합니다.</p>
                     </div>
 
                     <div class="article-section">
                         <h2>스크린샷 가이드</h2>
-                        <div class="screenshot-guide">
-                            <div class="screenshot-placeholder">전환 이벤트 설정 화면</div>
-                            <div class="screenshot-placeholder">전환 보고서 화면</div>
-                        </div>
+                        <ul class="info-list" style="list-style: none; padding-left: 0;">
+                            <li class="capture-item" style="padding-left: 1rem;">
+                                <img src="image/GA4/5.conversion/GA4_6_report1.jpg" alt="유입 리포트 내 전환지표 " style="width: 100%; height: auto; border-radius: 8px; border: 1px solid #e2e8f0; margin-bottom: 20px;">
+                            </li>
+                            <li class="capture-item" style="padding-left: 1rem;">
+                                <img src="image/GA4/5.conversion/GA4_7_report2.jpg" alt="이벤트 리포트 중 주요이벤트" style="width: 100%; height: auto; border-radius: 8px; border: 1px solid #e2e8f0;">
+                            </li>
+                        </ul>
                     </div>
                 </div>
             `
@@ -719,12 +741,26 @@ gtag('event', 'form_submit', {
                     <div class="article-section">
                         <h2>잠재고객 생성 단계</h2>
                         <ol class="info-list">
-                            <li>잠재고객 이름/설명 입력</li>
-                            <li>잠재고객 조건 설정</li>
+                            <li>GA4 관리 → 데이터 표시 → 구축(Audience) 메뉴</li>
+                            <li class="capture-item">
+                                <img src="image/GA4/6.audience/GA4_1_audience.jpg" alt="GA4 Audience 메뉴" style="width: 100%; height: auto; border-radius: 8px; border: 1px solid #e2e8f0;">
+                            </li>
                             <li>“새 잠재고객” 클릭</li>
-                            <li>GA4 관리 → 잠재고객 메뉴</li>
+                            <li class="capture-item">
+                                <img src="image/GA4/6.audience/GA4_2_new_audience.jpg" alt="새 잠재고객 클릭" style="width: 100%; height: auto; border-radius: 8px; border: 1px solid #e2e8f0;">
+                            </li>
+                            <li>맞춤 잠재고객 or 추천 잠재고객 or 템플릿 선택</li>
+                            <li class="capture-item">
+                                <img src="image/GA4/6.audience/GA4_3_select.jpg" alt="템플릿 선택" style="width: 100%; height: auto; border-radius: 8px; border: 1px solid #e2e8f0;">
+                            </li>
+                            <li>잠재고객 이름/설명 입력</li>
+                            <li class="capture-item">
+                                <img src="image/GA4/6.audience/GA4_4_name_custom.jpg" alt="이름 설명 입력" style="width: 100%; height: auto; border-radius: 8px; border: 1px solid #e2e8f0;">
+                            </li>
+                            <li>잠재고객 조건 설정</li>
                         </ol>
                         <p class="section-description">Google Ads와 연동해 타겟 광고에 활용할 수 있습니다.</p>
+                        <p class="section-description">GA4-Google Ads가 연동되었다면 잠재고객 list는 Google ads에서 바로 확인 가능합니다.</p>
                     </div>
 
                     <div class="article-section">
