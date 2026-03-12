@@ -98,10 +98,10 @@ const ga4SidebarData = {
     items: [
         { id: 'ga4-setup', name: 'GA4 기초 및 심화', icon: '📊', category: 'data-center' },
         { id: 'ga4-install', name: '가입 및 설치', icon: '📝', category: 'data-center' },
-        { id: 'ga4-events', name: '이벤트 설정', icon: '⚡', category: 'data-center' },
         { id: 'ga4-integrations', name: '연동 메뉴얼', icon: '🔗', category: 'data-center' },
-        { id: 'ga4-ecommerce', name: '전자상거래 태그', icon: '🛒', category: 'data-center' },
+        { id: 'ga4-events', name: '이벤트 설정', icon: '⚡', category: 'data-center' },
         { id: 'ga4-conversion', name: '전환(주요 이벤트)', icon: '🎯', category: 'data-center' },
+        { id: 'ga4-ecommerce', name: '전자상거래 태그', icon: '🛒', category: 'data-center' },
         { id: 'ga4-audience', name: '잠재고객 설정', icon: '👥', category: 'data-center' },
         { id: 'ga4-case', name: '사례 연구', icon: '📌', category: 'data-center' }
     ]

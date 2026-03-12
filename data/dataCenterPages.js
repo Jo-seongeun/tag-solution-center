@@ -757,19 +757,13 @@ gtag('event', 'form_submit', {
                             <li class="capture-item">
                                 <img src="image/GA4/6.audience/GA4_4_name_custom.jpg" alt="이름 설명 입력" style="width: 100%; height: auto; border-radius: 8px; border: 1px solid #e2e8f0;">
                             </li>
-                            <li>잠재고객 조건 설정</li>
+                            <li>잠재고객 조건 설정 : 페이지 설정에 따라 조건을 맞춰 주셔야합니다.</li>
                         </ol>
                         <p class="section-description">Google Ads와 연동해 타겟 광고에 활용할 수 있습니다.</p>
-                        <p class="section-description">GA4-Google Ads가 연동되었다면 잠재고객 list는 Google ads에서 바로 확인 가능합니다.</p>
+                        <p class="section-description" style="margin-top: 10px; color: #475569;">💡 GA4-Google Ads가 연동되었다면 잠재고객 list는 Google ads에서 바로 확인 가능합니다.</p>
                     </div>
 
-                    <div class="article-section">
-                        <h2>스크린샷 가이드</h2>
-                        <div class="screenshot-guide">
-                            <div class="screenshot-placeholder">잠재고객 생성 화면</div>
-                            <div class="screenshot-placeholder">잠재고객 목록 화면</div>
-                        </div>
-                    </div>
+                    
                 </div>
             `
         },
@@ -819,6 +813,9 @@ gtag('event', 'form_submit', {
                             <li><strong>태그(Tag):</strong> 타사 분석 도구(GA4, Meta 등)로 데이터를 전송하는 실행 코드</li>
                             <li><strong>트리거(Trigger):</strong> 태그가 언제 실행되어야 하는지 결정하는 조건 (예: 특정 버튼 클릭 시)</li>
                             <li><strong>변수(Variable):</strong> 태그나 트리거에 동적으로 값을 전달하는 저장소 (예: 클릭한 페이지 URL 반환)</li>
+                            <li class="capture-item">
+                                <img src="image/GTM/1.start/GTM_0_info.jpg" alt="GTM 구성 개요" style="width: 100%; height: auto; border-radius: 8px; border: 1px solid #e2e8f0;">
+                            </li>
                         </ul>
                     </div>
 
@@ -872,9 +869,24 @@ window.dataLayer.push({
                         <h2>설치 절차</h2>
                         <ul class="info-list">
                             <li>GTM 계정/컨테이너 생성</li>
+                            <li class="capture-item">
+                                <img src="image/GTM/1.start/GTM_1_account.jpg" alt="GTM 계정 생성" style="width: 100%; height: auto; border-radius: 8px; border: 1px solid #e2e8f0;">
+                            </li>
                             <li>head/body 코드 발급</li>
-                            <li>웹사이트에 스니펫 삽입</li>
+                            <li class="capture-item">
+                                <img src="image/GTM/1.start/GTM_2_tag_check.jpg" alt="head body 코드 발급" style="width: 100%; height: auto; border-radius: 8px; border: 1px solid #e2e8f0;">
+                            </li>
+                            <li>웹사이트에 GTM 코드 삽입</li>
+                            <li class="capture-item">
+                                <img src="image/GTM/1.start/GTM_3_tag_edit.jpg" alt="웹사이트에 GTM 코드 삽입" style="width: 100%; height: auto; border-radius: 8px; border: 1px solid #e2e8f0;">
+                            </li>
                             <li>미리보기로 실행 확인</li>
+                            <li class="capture-item">
+                                <img src="image/GTM/1.start/GTM_4_preview1.jpg" alt="미리보기 실행 확인 1" style="width: 100%; height: auto; border-radius: 8px; border: 1px solid #e2e8f0;">
+                            </li>
+                            <li class="capture-item">
+                                <img src="image/GTM/1.start/GTM_4_preview2.jpg" alt="미리보기 실행 확인 2" style="width: 100%; height: auto; border-radius: 8px; border: 1px solid #e2e8f0;">
+                            </li>
                         </ul>
                     </div>
 
@@ -926,39 +938,31 @@ height=\"0\" width=\"0\" style=\"display:none;visibility:hidden\"&gt;&lt;/iframe
                     <div class="article-section">
                         <h2>운영 체크리스트</h2>
                         <ul class="info-list">
-                            <li>네이밍 규칙 표준화</li>
-                            <li>변수/트리거 템플릿화</li>
-                            <li>작업 단위별 버전 기록</li>
-                            <li>폴더 구조로 태그 그룹화</li>
-                            <li>변경 전/후 릴리즈 노트 작성</li>
+                            <li><strong>네이밍 규칙 표준화:</strong> [매체]_[태그종류]_[조건] 형식 분이 (예: GA4_Event_Click_Purchase_Button)</li>
+                            <li><strong>변수/트리거 템플릿화:</strong> 자주 쓰이는 조건은 공통으로 사용 (예: Click URL = /complete 트리거 하나로 여러 매체 태그에 적용)</li>
+                            <li><strong>작업 단위별 버전 기록:</strong> 버전을 게시할 때 변경 내역을 상세히 기록하여 롤백이 용이하도록 관리 (예: v1.2 - 메인 배너 클릭 이벤트 추가)</li>
+                            <li><strong>폴더 구조로 태그 그룹화:</strong> 기능이나 매체별로 폴더를 나누어 스크롤 압박을 줄이고 관리를 용이하게 함 (예: GA4 태그 폴더, Meta 태그 폴더)</li>
+                            <li><strong>변경 전/후 릴리즈 노트 작성:</strong> 어떤 요구사항에 의해 태그를 추가/수정했는지 팀원들과 공유하는 문서화 과정 필수</li>
                         </ul>
                     </div>
 
                     <div class="article-section">
                         <h2>배포 전 QA</h2>
                         <ul class="info-list">
-                            <li>미리보기에서 이벤트 검수</li>
-                            <li>중복 전송 여부 체크</li>
-                            <li>핵심 전환 이벤트 테스트</li>
-                            <li>브라우저 콘솔 오류 확인</li>
+                            <li><strong>미리보기에서 이벤트 검수:</strong> GTM 디버그 모드(미리보기)를 켜고 태그가 올바른 시점에 작동(Fired)하는지 확인 (예: 장바구니 버튼 클릭 시 해당 태그 발생 여부)</li>
+                            <li><strong>중복 전송 여부 체크:</strong> 동일한 이벤트가 여러 번 트리거되어 데이터가 부풀려지지 않는지 점검 (예: 새로고침 또는 뒤로가기 시 구매 이벤트 중복 발생 확인)</li>
+                            <li><strong>핵심 전환 이벤트 테스트:</strong> 구매 완료, 회원가입 등 비즈니스 주요 지표가 설정한 항목들과 함께 누락 없이 기록되는지 End-to-End 로 테스트</li>
+                            <li><strong>브라우저 콘솔 오류 확인:</strong> 추가된 태그 코드로 인해 웹사이트 기존 자바스크립트나 기능에 충돌 및 오류(Console 에러 메시지)가 발생하지 않는지 개발자 도구(F12)로 점검</li>
                         </ul>
                     </div>
 
                     <div class="article-section">
                         <h2>운영 팁</h2>
                         <ul class="info-list">
-                            <li>불필요 태그 주기적 정리</li>
-                            <li>권한/승인 프로세스 설정</li>
-                            <li>테스트 환경과 운영 환경 분리</li>
+                            <li><strong>불필요 태그 주기적 정리:</strong> 종료된 광고 캠페인 태그나 더 이상 안 쓰는 스크립트를 주기적으로 중지/일시정지/삭제하여 브라우저 로딩 속도 저하를 방지</li>
+                            <li><strong>권한/승인 프로세스 설정:</strong> 휴먼 에러를 방지하기 위해 작업자(수정 권한)와 배포자(게시 권한)를 분리하여 상호 리뷰 과정을 거침</li>
+                            <li><strong>테스트 환경과 운영 환경 분리:</strong> GTM 환경(Environments) 기능을 활용 및 분리하여 개발/Test 웹사이트에서 먼저 검증 후 운영 웹사이트 영역에 배포</li>
                         </ul>
-                    </div>
-
-                    <div class="article-section">
-                        <h2>스크린샷 가이드</h2>
-                        <div class="screenshot-guide">
-                            <div class="screenshot-placeholder">버전 기록 화면</div>
-                            <div class="screenshot-placeholder">미리보기 검수 화면</div>
-                        </div>
                     </div>
 
                     <div class="faq-section">
@@ -1043,14 +1047,7 @@ window.dataLayer.push({
                             <li><strong>전송 시점:</strong> 버튼을 누른 직후인지, 페이지가 완전히 로드된 후인지 개발자와 상의하세요.</li>
                         </ul>
                     </div>
-
-                    <div class="article-section">
-                        <h2>스크린샷 가이드</h2>
-                        <div class="screenshot-guide">
-                            <div class="screenshot-placeholder">GTM 미리보기에서 데이터 레이어 변수 확인법</div>
-                            <div class="screenshot-placeholder">잘못된 데이터 레이어 전송 사례(Error)</div>
-                        </div>
-                    </div>
+                   
                 </div>
             `
         },
